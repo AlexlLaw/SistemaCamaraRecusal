@@ -4,8 +4,6 @@ require_once "../../classes/conexao.php";
 $c = new conectar();
 $conexao = $c->conexao();
 
-// $sql = "SELECT id_relator, nome, sobrenome, endereco, email, telefone, cpf FROM relatores";
-// $result = mysqli_query($conexao, $sql);
 
 ?>
 
@@ -115,36 +113,7 @@ while ($array3 = mysqli_fetch_array($buscarrelator)) {
     </tr>
     <tr>
 
-        <!-- <td>Cyro</td>
-        <td>
-             <//?php
-$sql10 = "SELECT relator2, COUNT(relator2) AS Qtd FROM fornecedores2 where relator2='Cyro' and MONTH(data2) = '1' and year(data2) = '2020'";
-$buscar = mysqli_query($conexao, $sql10);
-$Qtd = 0;
-
-while ($array10 = mysqli_fetch_array($buscar)) {
-    $Qtd = $Qtd + $array10['Qtd'];
-    ?>
-
-            <//?php }?>
-            <//?php echo $Qtd ?>
-        </td>
-        <td>
-
-            <//?php
-$sql11 = "SELECT sum(valor2) as valor2 from fornecedores2 where relator2='Cyro' and MONTH(data2) = '1' and year(data2) = '2020'";
-$buscarrelator = mysqli_query($conexao, $sql11);
-while ($array11 = mysqli_fetch_array($buscarrelator)) {
-    $valor = $valor + $array11['valor2'];
-
-    ?>
-
-            <//?php }?>
-            R$ <//?php echo $valor ?>
-        </td>
-
-
-    </tr> -->
+        
     <tr>
 
         <td>Juliana</td>

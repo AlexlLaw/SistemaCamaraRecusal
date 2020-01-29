@@ -4,15 +4,39 @@ require_once "../../classes/conexao.php";
 $c = new conectar();
 $conexao = $c->conexao();
 
-$sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, valor,valor_2, data, ano, recurso  FROM fornecedores  WHERE MONTH(data) = '1' and Year(data) = '2020' ";
-$result = mysqli_query($conexao, $sql);
+$filtro =$_POST['filtr'];
+$filtro1 =$_POST['filtr1'];
+   
+    $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, valor,valor_2, data1, ano, recurso  from fornecedores where data1 between '$filtro' and '$filtro1'";
+    $result = mysqli_query($conexao, $sql);
+    
+
+
+
+
+
+//$sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, valor,valor_2, data1, ano, recurso  FROM fornecedores";
 
 ?>
+<div>
+<form action="processos/tabelaProcessos.php" method="POST">
+<br>
+<input class="form-control" id="myInput" type="date" placeholder="Search.." name="filtr">
+<br>
+<input class="form-control" id="myInput" type="date" placeholder="Search.." name="filtr1">
+<br>
+<input type="submit" value="filtrar" class="btn btn-success">
+<br>
+</form>
+<br>
 
+</div>
 
 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
     <caption><label>Processos</label></caption>
+    
     <tr style="background-color: SlateGrey;">
+
         <td>Nro FA</td>
         <td>Consumidor</td>
         <td>Fornecedor</td>
@@ -22,8 +46,6 @@ $result = mysqli_query($conexao, $sql);
         <td>Data</td>
         <td>Ano</td>
         <td>Recurso</td>
-
-
         <td>Adicionar</td>
         <td>Excluir</td>
 
@@ -34,8 +56,9 @@ $result = mysqli_query($conexao, $sql);
 $total = 0;
 ?>
 
-    <?php while ($mostrar = mysqli_fetch_row($result)): ?>
 
+    <?php while ($mostrar = mysqli_fetch_row($result)): ?>
+<tbody id="myTable">
     <tr>
 
         <td><?php echo $mostrar[1]; ?></td>
@@ -69,7 +92,7 @@ $total = 0;
 
     <?php endwhile;?>
 
-
+    </tbody>
 </table>
 
 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
@@ -82,7 +105,7 @@ $total = 0;
             <?php
 //código php para somar os valores da primeira sessão se o mês for Janeiro.
 
-$total2Grau = "SELECT sum(valor) as valor from fornecedores where  MONTH(data) = '1' and Year(data) = '2020'";
+$total2Grau = "SELECT sum(valor) as valor from fornecedores where data1 between '$filtro' and '$filtro1'";
 //SELECT sum(valor) as valor from fornecedores where camara='1'"
 $buscarDb = mysqli_query($conexao, $total2Grau);
 $valor = 0;
@@ -90,6 +113,7 @@ $valor = 0;
 while ($array3 = mysqli_fetch_array($buscarDb)) {
     $valor = $valor + $array3['valor'];
     $valorFormatado = str_replace(',', '.', str_replace('.', '', $valor));
+    echo $valorFormatado;
     ?>
 
             <?php }?>
@@ -111,7 +135,7 @@ while ($array3 = mysqli_fetch_array($buscarDb)) {
 
             <?php
 //código php para somar os valores da segunda sessão se o mês for Janeiro.
-$total2Grau = "SELECT sum(valor_2)  as valor_2 from fornecedores where  MONTH(data) = '1 ' and Year(data) = '2020'";
+$total2Grau = "SELECT sum(valor_2)  as valor_2 from fornecedores where data1 between '$filtro' and '$filtro1'";
 $buscarDb = mysqli_query($conexao, $total2Grau);
 $valor = 0;
 
@@ -137,7 +161,7 @@ while ($array3 = mysqli_fetch_array($buscarDb)) {
             <td>
                 <?php
 
-$sql2 = "SELECT SUM(valor + valor_2 ) as soma FROM fornecedores WHERE MONTH(data) = '1' and Year(data) = '2020'";
+$sql2 = "SELECT SUM(valor + valor_2 ) as soma FROM fornecedores WHERE MONTH(data1) = '1' and Year(data1) = '2020'";
 $busca = mysqli_query($conexao, $sql2);
 $valor = 0;
 
@@ -169,7 +193,7 @@ while ($array4 = mysqli_fetch_array($busca)) {
                 <?php
 //código php para somar o total dos valores .
 
-$sql2 = "SELECT SUM(valor + valor_2 ) as soma FROM fornecedores WHERE  Year(data) = '2020'";
+$sql2 = "SELECT SUM(valor + valor_2 ) as soma FROM fornecedores WHERE  Year(data1) = '2020'";
 $buscar2 = mysqli_query($conexao, $sql2);
 $valor = 0;
 while ($array2 = mysqli_fetch_array($buscar2)) {
@@ -215,3 +239,15 @@ while ($array2 = mysqli_fetch_array($buscar2)) {
 
 
     </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

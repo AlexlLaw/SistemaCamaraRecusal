@@ -9,7 +9,7 @@ class processos
 
         // insira na tabela de fornecedores... esses dados estão indo para a linha 18 de adicionarProcessos. Note que lá a ordem é a mesma e a quantidade de campos também.
 
-        $sql = "INSERT into fornecedores (id_usuario, nrofa, consumidor, fornecedor,  relator, valor,valor_2,data,ano,recurso) VALUES ('$dados[0]', '$dados[1]',
+        $sql = "INSERT into fornecedores (id_usuario, nrofa, consumidor, fornecedor,  relator, valor,valor_2,data1,ano,recurso) VALUES ('$dados[0]', '$dados[1]',
 		   '$dados[2]',
 		   '$dados[3]',
 			'$dados[4]',
@@ -30,7 +30,7 @@ class processos
         $c = new conectar();
         $conexao = $c->conexao();
 
-        $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor,  relator, valor,valor_2,data,ano,recurso from fornecedores where id_fornecedor='$id' ";
+        $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor,  relator, valor,valor_2,data1,ano,recurso from fornecedores where id_fornecedor='$id' ";
 
         $result = mysqli_query($conexao, $sql);
         $mostrar = mysqli_fetch_row($result);
@@ -43,7 +43,7 @@ class processos
             'relator' => $mostrar[4],
             'valor' => $mostrar[5],
             'valor_2' => $mostrar[6],
-            'data' => $mostrar[7],
+            'data1' => $mostrar[7],
             'ano' => $mostrar[8],
             'recurso' => $mostrar[9],
 
@@ -61,7 +61,7 @@ class processos
 
 //o comando UPDATE atualiza os dados.
 
-        $sql = "UPDATE fornecedores SET nrofa = '$dados[1]', consumidor = '$dados[2]',fornecedor = '$dados[3]',relator = '$dados[4]',valor = '$dados[5]',valor_2='$dados[6]',data= '$dados[7]', ano='$dados[8]' , recurso='$dados[9]'  where id_fornecedor = '$dados[0]'";
+        $sql = "UPDATE fornecedores SET nrofa = '$dados[1]', consumidor = '$dados[2]',fornecedor = '$dados[3]',relator = '$dados[4]',valor = '$dados[5]',valor_2='$dados[6]',data1= '$dados[7]', ano='$dados[8]' , recurso='$dados[9]'  where id_fornecedor = '$dados[0]'";
 
         echo mysqli_query($conexao, $sql);
     }
