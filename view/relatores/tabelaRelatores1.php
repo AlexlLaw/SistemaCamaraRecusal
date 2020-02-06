@@ -58,7 +58,7 @@ function ListarNomeRelator()
     require_once "../../classes/conexao.php";
     $c = new conectar();
     $conexao = $c->conexao();
-    $sql = "SELECT relator FROM fornecedores group by relator ORDER BY relator desc; ";
+    $sql = "SELECT relator FROM processos group by relator ORDER BY relator desc; ";
     $buscarrelator = mysqli_query($conexao, $sql);
     return $buscarrelator;
 }
@@ -68,7 +68,7 @@ function TotalProcessosRelator($relator, $filtro, $filtro1)
     require_once "../../classes/conexao.php";
     $c = new conectar();
     $conexao = $c->conexao();
-    $sql6 = "SELECT COUNT(relator) AS Qtd FROM  fornecedores where relator = '$relator'and data1 between '$filtro' and '$filtro1';";
+    $sql6 = "SELECT COUNT(relator) AS Qtd FROM  processos where relator = '$relator'and data_jugamento between '$filtro' and '$filtro1';";
     $buscar = mysqli_query($conexao, $sql6);
     while ($l = $buscar->fetch_assoc()){
     break;
@@ -81,7 +81,7 @@ function ValorRelator($relator, $filtro, $filtro1)
     require_once "../../classes/conexao.php";
     $c = new conectar();
     $conexao = $c->conexao();
-    $sql5 = "SELECT sum(valor_2) as valor_2 from fornecedores where relator = '$relator'and data1 between '$filtro' and '$filtro1' group by relator ORDER BY relator asc";
+    $sql5 = "SELECT sum(ValorGrau_1) as ValorGrau_2 from processos where relator = '$relator'and data_jugamento between '$filtro' and '$filtro1' group by relator ORDER BY relator asc";
     $buscarrelator = mysqli_query($conexao, $sql5);
     $valor = 0;
     while ($array3 = $buscarrelator->fetch_assoc()) {

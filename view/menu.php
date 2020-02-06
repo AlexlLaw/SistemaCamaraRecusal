@@ -1,53 +1,38 @@
-<?php require_once "dependencias.php"?>
-
+<?php require_once "dependencias.php" ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title></title>
     <style type="text/css">
-    .btn-primary {
-        background-color: #000000;
-    }
+        .btn-primary {
+            background-color: #000000;
+        }
     </style>
-
 </head>
 
 <body>
-
     <!-- Begin Navbar  Menu fixo em toddas as páginas-->
     <div id="nav">
-  
         <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100">
-     
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                   
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
-                <img src="../img/marca_procon.jpg" width="100px" height="70px" class="d-inline-block align-top" alt="">
-
+                    <img src="../img/marca_procon.jpg" width="100px" height="70px" class="d-inline-block align-top" alt="">
                     <ul class="nav navbar-nav navbar-right">
                         <!--deixa os ícones do menu posicionados à direita -->
-
                         <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span>
                                 Inicio</a>
                         </li>
-
-                        
-
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false"><span
-                                    class="glyphicon glyphicon-user"></span> Consultas <span class="caret"></span></a>
-                            
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Consultas <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="http://procon.pb.gov.br/camararecursal/decisoes">Decisões Proferidas</a>
                                 </li>
@@ -55,55 +40,39 @@
                                         Recursais</a></li>
                             </ul>
                         </li>
-
                         </li>
                         <li><a href="inicio2.php"><span class="glyphicon glyphicon-home"></span>
                                 Sobre</a>
                         </li>
-
                         <li class="dropdown">
-                            <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false"><span
-                                    class="glyphicon glyphicon-user"></span>
+                            <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                 Usuario: <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-
-
-                                <?php if ($_SESSION['usuario'] == "admin"): ?>
-                                <li> <a href="usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                        Usuários</a></li>
-                                <?php endif;?>
-
-                                <li> <a style="color: red" href="../procedimentos/sair.php"><span
-                                            class="glyphicon glyphicon-off"></span> Sair</a></li>
-
+                                <?php if ($_SESSION['usuario'] == "admin") : ?>
+                                    <li> <a href="usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
+                                            Usuários</a></li>
+                                <?php endif; ?>
+                                <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
                     </ul>
-
                 </div>
                 <!--/.nav-collapse -->
             </div>
             <!--/.contatiner -->
         </div>
     </div>
-
-
-
 </body>
 
-
-
 </html>
-
 <script type="text/javascript">
-$(window).scroll(function() {
-    if ($(document).scrollTop() > 150) {
-        $('.logo').width(100);
-        $('.logo').height(60);
-    } else {
-        $('.logo').height(100);
-        $('.logo').width(150);
-    }
-});
+    $(window).scroll(function() {
+        if ($(document).scrollTop() > 150) {
+            $('.logo').width(100);
+            $('.logo').height(60);
+        } else {
+            $('.logo').height(100);
+            $('.logo').width(150);
+        }
+    });
 </script>

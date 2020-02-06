@@ -95,9 +95,9 @@ if (isset($_SESSION['usuario'])) {
                             <input type="text" class="form-control input-sm" id="fornecedorU" name="fornecedorU">
                             <div class="form-row">
                                 <label>Valor do 1ª Grau</label>
-                                <input type="text" class="form-control input-sm" id="valorU" name="valorU">
+                                <input type="text" class="form-control input-sm" id="ValorGrau_1U" name="ValorGrau_1U">
                                 <label> Valor do 2º Grau</label>
-                                <input type="text" class="form-control input-sm" id="valor_2U" name="valor_2U">
+                                <input type="text" class="form-control input-sm" id="ValorGrau_2U" name="ValorGrau_2U">
                                 <label>Recurso</label>
                                 <select class="form-control input-sm" id="recursoU" name="recursoU">
                                     <option>Tempestivo </option>
@@ -106,7 +106,7 @@ if (isset($_SESSION['usuario'])) {
                                 <label>Relator</label>
                                 <input type="text" class="form-control input-sm" id="relatorU" name="relatorU">
                                 <label>Data de julgamento</label>
-                                <input type="date" class="form-control input-sm" id="dataU" name="dataU">
+                                <input type="date" class="form-control input-sm" id="data_jugamentoU" name="data_jugamentoU">
                                 <label>Ano</label>
                                 <input type="number" class="form-control input-sm" id="anoU" name="anoU">
                         </form>
@@ -147,9 +147,9 @@ if (isset($_SESSION['usuario'])) {
                     $('#consumidorU').val(dado['consumidor']);
                     $('#fornecedorU').val(dado['fornecedor']);
                     $('#relatorU').val(dado['relator']);
-                    $('#valorU').val(dado['valor']);
-                    $('#valor_2U').val(dado['valor_2']);
-                    $('#dataU').val(dado['data']);
+                    $('#ValorGrau_1U').val(dado['ValorGrau_1U']);
+                    $('#ValorGrau_2U').val(dado['ValorGrau_2U']);
+                    $('#data_jugamentoU').val(dado['data_jugamentoU']);
                     $('#anoU').val(dado['ano']);
                     $('#recursoU').val(dado['recurso']);
                 }

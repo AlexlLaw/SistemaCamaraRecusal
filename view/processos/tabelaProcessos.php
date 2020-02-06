@@ -2,17 +2,14 @@
 require_once "../../classes/conexao.php";
 $c = new conectar();
 $conexao = $c->conexao();
-
-
 $filtro = $_POST['filtr'];
 $filtro1 = $_POST['filtr1'];
 if (!isset($_POST['filtr'])) {
     echo 'vazio';
 } else {
-    $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, valor,valor_2, data1, ano, recurso  from fornecedores where data1 between '$filtro' and '$filtro1'";
+    $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, ValorGrau_1,ValorGrau_2, data_jugamento, ano, recurso  from processos where data_jugamento between '$filtro' and '$filtro1'";
     $result = mysqli_query($conexao, $sql);
 }
-//$sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, valor,valor_2, data1, ano, recurso  FROM fornecedores";
 ?>
 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
     <caption><label>Processos</label></caption>
@@ -66,12 +63,12 @@ if (!isset($_POST['filtr'])) {
         <td>
             <?php
             //código php para somar os valores da primeira sessão se o mês for Janeiro.
-            $total2Grau = "SELECT sum(valor) as valor from fornecedores where data1 between '$filtro' and '$filtro1'";
-            //SELECT sum(valor) as valor from fornecedores where camara='1'"
+            $total2Grau = "SELECT sum(ValorGrau_1) as ValorGrau_1 from processos where data_jugamento between '$filtro' and '$filtro1'";
+            //SELECT sum(valor) as valor from processos where camara='1'"
             $buscarDb = mysqli_query($conexao, $total2Grau);
             $valor = 0;
             while ($array3 = mysqli_fetch_array($buscarDb)) {
-                $valor = $valor + $array3['valor'];
+                $valor = $valor + $array3['ValorGrau_1'];
                 $valorFormatado = str_replace(',', '.', str_replace('.', '', $valor));
             ?>
             <?php } ?>
@@ -87,11 +84,11 @@ if (!isset($_POST['filtr'])) {
         <td>
             <?php
             //código php para somar os valores da segunda sessão 
-            $total2Grau = "SELECT sum(valor_2)  as valor_2 from fornecedores where data1 between '$filtro' and '$filtro1'";
+            $total2Grau = "SELECT sum(ValorGrau_2)  as ValorGrau_2 from processos where data_jugamento between '$filtro' and '$filtro1'";
             $buscarDb = mysqli_query($conexao, $total2Grau);
             $valor = 0;
             while ($array3 = mysqli_fetch_array($buscarDb)) {
-                $valor = $valor + $array3['valor_2'];
+                $valor = $valor + $array3['ValorGrau_2'];
                 $valorFormatado = str_replace(',', '.', str_replace('.', '', $valor));
             ?>
             <?php } ?>
@@ -106,7 +103,7 @@ if (!isset($_POST['filtr'])) {
             <td>
                 <?php
                 //código php para somar o total dos valores .
-                $sql2 = "SELECT SUM(valor_2 ) as soma FROM fornecedores WHERE  Year(data1) = '2020'";
+                $sql2 = "SELECT SUM(ValorGrau_2) as soma FROM processos WHERE  Year(data_jugamento) = '2020'";
                 $buscar2 = mysqli_query($conexao, $sql2);
                 $valor = 0;
                 while ($array2 = mysqli_fetch_array($buscar2)) {
@@ -128,7 +125,8 @@ if (!isset($_POST['filtr'])) {
     </div>
     <table style="text-align: center; height: 100px ;">
         <tr>
-            <td style=" text-decoration:none color:#FFF;"><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1;?>">Total de valores por relator no mês de janeiro.<!--target="_blank--></a></td>
+            <td style=" text-decoration:none color:#FFF;"><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1; ?>">Total de valores por relator no mês de janeiro.
+                    <!--target="_blank--></a></td>
         </tr>
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
