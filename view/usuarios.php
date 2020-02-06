@@ -3,9 +3,6 @@ session_start();
 if(isset($_SESSION['usuario'])){
 
 	?>
-
-
-
 <!DOCTYPE html>
 	<html>
 	<head>
@@ -18,15 +15,22 @@ if(isset($_SESSION['usuario'])){
 			<div class="row">
 				<div class="col-sm-4">
 					<form id="frmRegistro">
-						<label>Nome</label>
+						<label>Nome </label>
 						<input type="text" class="form-control input-sm" name="nome" id="nome">
-						<label>Usuário</label>
+						<label>Usuário </label>
 						<input type="text" class="form-control input-sm" name="usuario" id="usuario">
-						<label>Email</label>
+						<label>Email </label>
 						<input type="text" class="form-control input-sm" name="email" id="email">
-						<label>Senha</label>
+						<label>Senha </label>
 						<input type="text" class="form-control input-sm" name="senha" id="senha">
 						<p></p>
+						<label>Permissões </label>
+						<select class="form-control">
+						<option>...</option>
+						<option name="permissao" value="adm">Administrador</option>
+						<option name="permissao" value="usuario">Usuario</option>
+						</select>
+						<br>
 						<span class="btn btn-primary" id="registro">Salvar</span>
 
 					</form>

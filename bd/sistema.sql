@@ -37,7 +37,7 @@ CREATE TABLE `fornecedores` (
   `relator` varchar(100) NOT NULL,
   `valor` varchar(100) NOT NULL,
   `valor_2` float(10,2) NOT NULL,
-  `data` date NOT NULL,
+  `data1` date NOT NULL,
   `ano` int(11) NOT NULL,
   `recurso` varchar(100) NOT NULL,
   `total` int(11) NOT NULL
