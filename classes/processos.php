@@ -6,7 +6,7 @@ class processos
         $c = new conectar();
         $conexao = $c->conexao();
         // insira na tabela de fornecedores... esses dados estão indo para a linha 18 de adicionarProcessos. Note que lá a ordem é a mesma e a quantidade de campos também.
-        $sql = "INSERT into processos (nrofa, consumidor, fornecedor,  relator, ValorGrau_1,ValorGrau_2,data_jugamento,ano,recurso) VALUES (
+        $sql = "INSERT into processos (id_fornecedor,nrofa, consumidor, fornecedor,  relator, ValorGrau_1,ValorGrau_2,data_jugamento,ano,recurso) VALUES (
            '$dados[0]', 
            '$dados[1]',
 		   '$dados[2]',
@@ -15,7 +15,8 @@ class processos
            '$dados[5]',
            '$dados[6]',
            '$dados[7]',
-           '$dados[8]')";
+           '$dados[8]',
+           '$dados[9]')";
         return mysqli_query($conexao, $sql);
         // isso gera por padrão o valor 1. Lá nas páginas dos meses se a função for 1 é porque os dados foram adicionados.
     }
@@ -24,7 +25,7 @@ class processos
     { //esse $id tem que ser igual ao da linha 28.
         $c = new conectar();
         $conexao = $c->conexao();
-        $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor,  relator, ValorGrau_1,ValorGrau_2,data1,ano,recurso from processos where id_fornecedor='$id' ";
+        $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor,  relator, ValorGrau_1,ValorGrau_2,data_jugamento,ano,recurso from processos where id_fornecedor='$id' ";
         $result = mysqli_query($conexao, $sql);
         $mostrar = mysqli_fetch_row($result);
         $dados = array(
@@ -35,7 +36,7 @@ class processos
             'relator' => $mostrar[4],
             'ValorGrau_1' => $mostrar[5],
             'ValorGrau_2' => $mostrar[6],
-            'data1' => $mostrar[7],
+            'data_jugamento' => $mostrar[7],
             'ano' => $mostrar[8],
             'recurso' => $mostrar[9],
         );

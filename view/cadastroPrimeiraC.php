@@ -28,9 +28,9 @@ if (isset($_SESSION['usuario'])) {
                         <label>Fornecedor</label>
                         <input type="text" class="form-control input-sm" id="fornecedor" name="fornecedor">
                         <label>Valor do 1 º Grau</label>
-                        <input type=" text " class="form-control input-sm" id="valor" name="valor">
+                        <input type=" text " class="form-control input-sm" id="ValorGrau_1" name="ValorGrau_1">
                         <label> Valor do 2º Grau</label>
-                        <input type="text" class="form-control input-sm" id="valor_2" name="valor_2">
+                        <input type="text" class="form-control input-sm" id="ValorGrau_2" name="ValorGrau_2">
                         <label>Recurso</label>
                         <select class="form-control input-sm" id="recurso" name="recurso">
                             <option>Tempestivo </option>
@@ -51,7 +51,7 @@ if (isset($_SESSION['usuario'])) {
                             <option>Cláudio</option>
                         </select>
                         <label>Data De Julgamento</label>
-                        <input type="date" class="form-control input-sm" id="data" name="data">
+                        <input type="date" class="form-control input-sm" id="data_jugamento" name="data_jugamento">
                         <label>Ano</label>
                         <input type="number" class="form-control input-sm" id="ano" name="ano">
                         <p></p>
@@ -93,23 +93,22 @@ if (isset($_SESSION['usuario'])) {
                             <input type="text" class="form-control input-sm" id="consumidorU" name="consumidorU">
                             <label>Fornecedor</label>
                             <input type="text" class="form-control input-sm" id="fornecedorU" name="fornecedorU">
-                            <div class="form-row">
-                                <label>Valor do 1ª Grau</label>
-                                <input type="text" class="form-control input-sm" id="ValorGrau_1U" name="ValorGrau_1U">
-                                <label> Valor do 2º Grau</label>
-                                <input type="text" class="form-control input-sm" id="ValorGrau_2U" name="ValorGrau_2U">
-                                <label>Recurso</label>
-                                <select class="form-control input-sm" id="recursoU" name="recursoU">
-                                    <option>Tempestivo </option>
-                                    <option> Intempestivo </option>
-                                </select>
-                                <label>Relator</label>
-                                <input type="text" class="form-control input-sm" id="relatorU" name="relatorU">
-                                <label>Data de julgamento</label>
-                                <input type="date" class="form-control input-sm" id="data_jugamentoU" name="data_jugamentoU">
-                                <label>Ano</label>
-                                <input type="number" class="form-control input-sm" id="anoU" name="anoU">
-                        </form>
+                            <label>Valor do 1ª Grau</label>
+                            <input type="text" class="form-control input-sm" id="ValorGrau_1U" name="ValorGrau_1U">
+                            <label> Valor do 2º Grau</label>
+                            <input type="text" class="form-control input-sm" id="ValorGrau_2U" name="ValorGrau_2U">
+                            <label>Recurso</label>
+                            <select class="form-control input-sm" id="recursoU" name="recursoU">
+                                <option>Tempestivo </option>
+                                <option> Intempestivo </option>
+                            </select>
+                            <label>Relator</label>
+                            <input type="text" class="form-control input-sm" id="relatorU" name="relatorU">
+                            <label>Data de julgamento</label>
+                            <input type="date" class="form-control input-sm" id="data_jugamentoU" name="data_jugamentoU">
+                            <label>Ano</label>
+                            <input type="number" class="form-control input-sm" id="anoU" name="anoU">
+                         </form>
                     </div>
                     <div class="modal-footer">
                         <button id="btnAdicionarProcessoU" type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
@@ -147,9 +146,9 @@ if (isset($_SESSION['usuario'])) {
                     $('#consumidorU').val(dado['consumidor']);
                     $('#fornecedorU').val(dado['fornecedor']);
                     $('#relatorU').val(dado['relator']);
-                    $('#ValorGrau_1U').val(dado['ValorGrau_1U']);
-                    $('#ValorGrau_2U').val(dado['ValorGrau_2U']);
-                    $('#data_jugamentoU').val(dado['data_jugamentoU']);
+                    $('#ValorGrau_1U').val(dado['ValorGrau_1']);
+                    $('#ValorGrau_2U').val(dado['ValorGrau_2']);
+                    $('#data_jugamentoU').val(dado['data_jugamento']);
                     $('#anoU').val(dado['ano']);
                     $('#recursoU').val(dado['recurso']);
                 }
