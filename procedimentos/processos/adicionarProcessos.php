@@ -13,14 +13,14 @@ $dados = array(
     $_POST['nrofa'],
     $_POST['consumidor'],
     $_POST['fornecedor'],
-
     $_POST['relator'],
-    $_POST['valor'],
-    $_POST['valor_2'],
-    $_POST['data'],
+    $_POST['ValorGrau_1'],
+    $_POST['valorGrau_2'],
+    $_POST['data_jugamento'],
     $_POST['ano'],
-    $_POST['recurso'],
+    $_POST['recurso']
 
 );
+
 
 echo $obj->adicionar($dados);

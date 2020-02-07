@@ -192,12 +192,14 @@ if (isset($_SESSION['usuario'])) {
                     data: dados,
                     url: "../procedimentos/processos/adicionarProcessos.php",
                     success: function(r) {
-                        if (r == 1) {
+                        if (r != 1) {
                             $('#frmProcessos')[0].reset();
                             //para adicionar novo registro
                             alertify.success("Registro Adicionado");
                         } else {
+                            console.log(dados)
                             alertify.error("Não foi possível adicionar");
+                            
                         }
                     }
                 });

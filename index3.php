@@ -12,35 +12,22 @@
 	}
 
 ?>
+
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>SB Admin - Login</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
-
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<script src="lib/jquery-3.2.1.min.js"></script>
+	<script src="js/funcoes.js"></script>
 </head>
+<body class="bg-primary">
 
-<body class="bg-dark">
 
-  <div class="container">
-    <div class="card card-login mx-auto mt-5">
-      <div class="card-header"> <img src="img/logoProcon.png" width="100px" height="70px" class="rounded mx-auto d-block" alt=""></div>
-      <div class="card-body">
-        
+
 						<form id="frmLogin">
 							<label>Email</label>
 							<input type="text" class="form-control " name="email" id="email">
@@ -56,14 +43,13 @@
 							 ?>
 							
 						</form>
-      
-      </div>
-    </div>
-  </div>
 
+						
+	
+</body>
+</html>
 
-
-  <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function(){
 		$('#entrarSistema').click(function(){
 
@@ -91,7 +77,3 @@
 	});
 	});
 </script>
-
-</body>
-
-</html>

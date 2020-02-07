@@ -6,7 +6,7 @@ class processos
         $c = new conectar();
         $conexao = $c->conexao();
         // insira na tabela de fornecedores... esses dados estão indo para a linha 18 de adicionarProcessos. Note que lá a ordem é a mesma e a quantidade de campos também.
-        $sql = "INSERT into processos (id_fornecedor,nrofa, consumidor, fornecedor,  relator, ValorGrau_1,ValorGrau_2,data_jugamento,ano,recurso) VALUES (
+        $sql = "INSERT into processos (id_fornecedor,nrofa, consumidor, fornecedor,  relator, ValorGrau_1, ValorGrau_2, data_jugamento, ano, recurso) VALUES (
            '$dados[0]', 
            '$dados[1]',
 		   '$dados[2]',
@@ -21,6 +21,7 @@ class processos
         // isso gera por padrão o valor 1. Lá nas páginas dos meses se a função for 1 é porque os dados foram adicionados.
     }
     //função que irá atualizar os dados da janela modal.
+    
     public function obterDados($id)
     { //esse $id tem que ser igual ao da linha 28.
         $c = new conectar();
@@ -40,6 +41,7 @@ class processos
             'ano' => $mostrar[8],
             'recurso' => $mostrar[9],
         );
+        
         return $dados;
     }
     //função para atualizar dados no modal.
