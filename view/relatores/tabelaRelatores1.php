@@ -3,7 +3,6 @@ require_once "../../classes/conexao.php";
 $c = new conectar();
 $conexao = $c->conexao();
 session_start();
-if (isset($_SESSION['usuario'])) {
     $filtro = $_GET['filtro'];
     $filtro1 = $_GET['filtro1']
 ?>
@@ -41,7 +40,7 @@ if (isset($_SESSION['usuario'])) {
                             <?php } ?>
                         </table>
                         <td style="align:higth;">
-                            <a href="janeiro.php" class="btn btn-danger btn-sm"> Voltar <span class="glyphicon glyphicon glyphicon-share-alt"></span></a>
+                            <a href="../cadastroPrimeiraC.php" class="btn btn-danger btn-sm"> Voltar <span class="glyphicon glyphicon glyphicon-share-alt"></span></a>
                         </td>
                 </div>
             </div>
@@ -50,9 +49,7 @@ if (isset($_SESSION['usuario'])) {
 
     </html>
 <?php
-} else {
-    header("location:../index.php");
-}
+
 function ListarNomeRelator()
 {
     require_once "../../classes/conexao.php";

@@ -59,12 +59,10 @@ session_start();
 						<input type="text" class="form-control input-sm" name="usuarioU" id="usuarioU">
 						<label>Email</label>
 						<input type="text" class="form-control input-sm" name="emailU" id="emailU">
-
 					</form>
 				</div>
 				<div class="modal-footer">
 					<button id="btnAtualizaUsuario" type="button" class="btn btn-warning" data-dismiss="modal">Editar</button>
-
 				</div>
 			</div>
 		</div>
@@ -79,9 +77,7 @@ session_start();
 			data: "idusuario=" + idusuario,
 			url: "../procedimentos/usuarios/obterDados.php",
 			success: function(r) {
-
 				dado = jQuery.parseJSON(r);
-
 				$('#idUsuario').val(dado['id']);
 				$('#nomeU').val(dado['nome']);
 				$('#usuarioU').val(dado['user']);
@@ -157,7 +153,7 @@ session_start();
 		});
 	});
 </script>
-<? php/*
+<?php/*
 }else{
 	header("location:../index.php");
 }*/

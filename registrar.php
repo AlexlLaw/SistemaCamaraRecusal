@@ -4,10 +4,10 @@
 	$conexao = $obj->conexao();
 	$sql = "SELECT * from usuarios where email='admin'";
 	$result = mysqli_query($conexao, $sql);
-	/*$validar = 0;
+	$validar = 0;
 	if(mysqli_num_rows($result) > 0){
 		header("location:index.php");
-	}*/
+	}
 ?>
 <!DOCTYPE html>
 <html>

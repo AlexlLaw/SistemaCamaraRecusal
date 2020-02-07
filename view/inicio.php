@@ -4,7 +4,7 @@ $t1 = 'fornecedores';
 $t2 = 'fornecedores2';
 
 session_start();
-if (isset($_SESSION['usuario'])) {
+//if (isset($_SESSION['usuario'])) {
 
 ?>
 
@@ -66,9 +66,9 @@ if (isset($_SESSION['usuario'])) {
 
     </html>
 <?php
-} else {
+/*} else {
     header("location:../index.php");
-}
+}*/
 ?>
 <script type="text/javascript">
     $(window).scroll(function() {
