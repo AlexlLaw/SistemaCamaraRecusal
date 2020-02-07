@@ -8,9 +8,6 @@ class conectar{
 
 	public function conexao(){
 		$conexao = mysqli_connect($this->servidor, $this->usuario, $this->senha, $this->bd);
-
 		return $conexao;
 	}
 }
-
- ?>

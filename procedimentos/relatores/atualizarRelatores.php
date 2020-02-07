@@ -1,15 +1,7 @@
 <?php 
-
-
 require_once "../../classes/conexao.php";
 require_once "../../classes/relatores.php";
-
-
-
 $obj = new relatores();
-
-
-
 $dados=array(
 	$_POST['idrelatorU'],
 	$_POST['nomeU'],
@@ -18,10 +10,5 @@ $dados=array(
 	$_POST['emailU'],
 	$_POST['telefoneU'],
 	$_POST['cpfU']
-	
-
 );
-
 echo $obj->atualizarRelator($dados);
-
- ?>

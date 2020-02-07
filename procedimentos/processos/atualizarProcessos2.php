@@ -1,10 +1,7 @@
 <?php
-
 require_once "../../classes/conexao.php";
 require_once "../../classes/processos2.php";
-
 $obj = new processos2();
-
 $dados = array(
     $_POST['idprocesso2U'],
     $_POST['nrofa2U'],
@@ -16,7 +13,5 @@ $dados = array(
     $_POST['data2U'],
     $_POST['ano2U'],
     $_POST['recurso2U'],
-
 );
-
 echo $obj->atualizar($dados);

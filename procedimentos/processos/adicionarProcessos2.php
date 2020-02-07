@@ -1,13 +1,9 @@
 <?php
-
 session_start();
 require_once "../../classes/conexao.php";
 require_once "../../classes/processos2.php";
-
 $idusuario = $_SESSION['iduser'];
-
 $obj = new processos2();
-
 $dados = array(
     $idusuario,
     $_POST['nrofa2'],
@@ -21,5 +17,4 @@ $dados = array(
     $_POST['recurso2'],
 
 );
-
 echo $obj->adicionar($dados);

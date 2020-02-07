@@ -1,47 +1,24 @@
-<?php 
+<?php
 session_start();
-if(isset($_SESSION['usuario'])){
-
-	?>
-
-
+if (isset($_SESSION['usuario'])) { ?>
 	<!DOCTYPE html>
 	<html>
+
 	<head>
 		<title>clientes</title>
 		<?php require_once "menu.php"; ?>
 	</head>
+
 	<body>
 		<div class="container">
 			<h1>Relatores</h1>
 			<div class="row">
-				<!-- <div class="col-sm-4">
-					<form id="frmClientes">
-						<label>Nome</label>
-						<input type="text" class="form-control input-sm" id="nome" name="nome">
-						<label>Sobrenome</label>
-						<input type="text" class="form-control input-sm" id="sobrenome" name="sobrenome">
-						<label>Endereço</label>
-						<input type="text" class="form-control input-sm" id="endereco" name="endereco">
-						<label>Email</label>
-						<input type="text" class="form-control input-sm" id="email" name="email">
-						<label>Telefone</label>
-						<input type="text" class="form-control input-sm" id="telefone" name="telefone">
-						<label>CPF</label>
-						<input type="text" class="form-control input-sm" id="cpf" name="cpf">
-						<p></p>
-						<span class="btn btn-primary" id="btnAdicionarCliente">Salvar</span>
-					</form>
-				</div> -->
 				<div class="col-sm-10">
 					<div id="tabelaClientesLoad"></div>
 				</div>
 			</div>
 		</div>
-
 		<!-- Button trigger modal -->
-
-
 		<!-- Modal -->
 		<div class="modal fade" id="abremodalClientesUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog modal-sm" role="document">
@@ -70,42 +47,35 @@ if(isset($_SESSION['usuario'])){
 					<div class="modal-footer">
 						<button id="btnAdicionarClienteU" type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
 						<table class="table table-hover table-condensed table-bordered" style="text-align: center;">
-<caption><label>Total por Relator</label></caption>
-<tr>
-			<td>Demetrius</td>
-	 		<td>Edson</td>
-	 		<td>Filipe</td>
-	 		<td>Meriene</td>
-	 		<td>Cyro</td>
-	 		<td>Juliana</td>
-	 		<td>Sérgio</td>
-			<td>Fernando</td>
-			<td>Rogério</td>
-			<td>Cláudio</td>
-			
-			
-	</tr>
-</table>
+							<caption><label>Total por Relator</label></caption>
+							<tr>
+								<td>Demetrius</td>
+								<td>Edson</td>
+								<td>Filipe</td>
+								<td>Meriene</td>
+								<td>Cyro</td>
+								<td>Juliana</td>
+								<td>Sérgio</td>
+								<td>Fernando</td>
+								<td>Rogério</td>
+								<td>Cláudio</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</body>
+
 	</html>
-
 	<script type="text/javascript">
-		function adicionarDado(idcliente){
-
+		function adicionarDado(idcliente) {
 			$.ajax({
-				type:"POST",
-				data:"idcliente=" + idcliente,
-				url:"../procedimentos/clientes/obterDadosCliente.php",
-				success:function(r){
-
-					dado=jQuery.parseJSON(r);
-
-
+				type: "POST",
+				data: "idcliente=" + idcliente,
+				url: "../procedimentos/clientes/obterDadosCliente.php",
+				success: function(r) {
+					dado = jQuery.parseJSON(r);
 					$('#idclienteU').val(dado['id_cliente']);
 					$('#nomeU').val(dado['nome']);
 					$('#sobrenomeU').val(dado['sobrenome']);
@@ -113,63 +83,51 @@ if(isset($_SESSION['usuario'])){
 					$('#emailU').val(dado['email']);
 					$('#telefoneU').val(dado['telefone']);
 					$('#cpfU').val(dado['cpf']);
-
-
-
 				}
 			});
 		}
 
-		function eliminarCliente(idcliente){
-			alertify.confirm('Deseja Excluir este cliente?', function(){ 
+		function eliminarCliente(idcliente) {
+			alertify.confirm('Deseja Excluir este cliente?', function() {
 				$.ajax({
-					type:"POST",
-					data:"idcliente=" + idcliente,
-					url:"../procedimentos/clientes/eliminarClientes.php",
-					success:function(r){
-
-
-						if(r==1){
+					type: "POST",
+					data: "idcliente=" + idcliente,
+					url: "../procedimentos/clientes/eliminarClientes.php",
+					success: function(r) {
+						if (r == 1) {
 							$('#tabelaClientesLoad').load("clientes/tabelaClientes.php");
 							alertify.success("Excluido com sucesso!!");
-						}else{
+						} else {
 							alertify.error("Não foi possível excluir");
 						}
 					}
 				});
-			}, function(){ 
+			}, function() {
 				alertify.error('Cancelado !')
 			});
 		}
 	</script>
-
 	<script type="text/javascript">
-		$(document).ready(function(){
-
+		$(document).ready(function() {
 			$('#tabelaClientesLoad').load("clientes/tabelaClientes.php");
-
-			$('#btnAdicionarCliente').click(function(){
-
-				vazios=validarFormVazio('frmClientes');
-
-				if(vazios > 0){
+			$('#btnAdicionarCliente').click(function() {
+				vazios = validarFormVazio('frmClientes');
+				if (vazios > 0) {
 					alertify.alert("Preencha os Campos!!");
 					return false;
 				}
-
-				dados=$('#frmClientes').serialize();
-
+				dados = $('#frmClientes').serialize();
 				$.ajax({
-					type:"POST",
-					data:dados,
-					url:"../procedimentos/clientes/adicionarClientes.php",
-					success:function(r){
+					type: "POST",
+					data: dados,
+					url: "../procedimentos/clientes/adicionarClientes.php",
+					success: function(r) {
 
-						if(r==1){
+						if (r == 1) {
 							$('#frmClientes')[0].reset();
 							$('#tabelaClientesLoad').load("clientes/tabelaClientes.php");
 							alertify.success("Cliente Adicionado");
-						}else{
+						} else {
 							alertify.error("Não foi possível adicionar");
 						}
 					}
@@ -177,25 +135,20 @@ if(isset($_SESSION['usuario'])){
 			});
 		});
 	</script>
-
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#btnAdicionarClienteU').click(function(){
-				dados=$('#frmClientesU').serialize();
-
+		$(document).ready(function() {
+			$('#btnAdicionarClienteU').click(function() {
+				dados = $('#frmClientesU').serialize();
 				$.ajax({
-					type:"POST",
-					data:dados,
-					url:"../procedimentos/clientes/atualizarClientes.php",
-					success:function(r){
-
-
-
-						if(r==1){
+					type: "POST",
+					data: dados,
+					url: "../procedimentos/clientes/atualizarClientes.php",
+					success: function(r) {
+						if (r == 1) {
 							$('#frmClientes')[0].reset();
 							$('#tabelaClientesLoad').load("clientes/tabelaClientes.php");
 							alertify.success("Cliente atualizado com sucesso!");
-						}else{
+						} else {
 							alertify.error("Não foi possível atualizar cliente");
 						}
 					}
@@ -203,11 +156,8 @@ if(isset($_SESSION['usuario'])){
 			})
 		})
 	</script>
-
-
-	<?php 
-}else{
+<?php
+} else {
 	header("location:../index.php");
 }
 ?>
-

@@ -4,7 +4,6 @@
 	require_once "../../classes/usuarios.php";
 
 	$obj= new usuarios;
-
 	$dados=array(
 			$_POST['idUsuario'],  
 		    $_POST['nomeU'] , 
@@ -12,6 +11,3 @@
 		    $_POST['emailU']
 				);  
 	echo $obj->atualizar($dados);
-
-
- ?>

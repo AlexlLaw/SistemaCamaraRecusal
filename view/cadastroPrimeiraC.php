@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (isset($_SESSION['usuario'])) {
+//if (isset($_SESSION['usuario'])) {
 ?>
     <!--verificação para saber se existe usuário logado-->
     <!DOCTYPE html>
@@ -239,7 +239,7 @@ if (isset($_SESSION['usuario'])) {
         })
     </script>
 <?php
-} else {
+/*} else {
     header("location:../index.php");
-}
+}*/
 ?>

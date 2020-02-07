@@ -70,8 +70,8 @@ function TotalProcessosRelator($relator, $filtro, $filtro1)
     $conexao = $c->conexao();
     $sql6 = "SELECT COUNT(relator) AS Qtd FROM  processos where relator = '$relator'and data_jugamento between '$filtro' and '$filtro1';";
     $buscar = mysqli_query($conexao, $sql6);
-    while ($l = $buscar->fetch_assoc()){
-    break;
+    while ($l = $buscar->fetch_assoc()) {
+        break;
     }
     return $l['Qtd'];
 }

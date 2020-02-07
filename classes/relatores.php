@@ -17,7 +17,7 @@ class relatores{
 	public function obterDadosRelator($idrelator){
 		$c = new conectar();
 		$conexao=$c->conexao();
-		$sql = "SELECT id_relator, nome, sobrenome, endereco, email, telefone, cpf from relatores where id_relator='$idcliente' ";
+		$sql = "SELECT id_relator, nome, sobrenome, endereco, email, telefone, cpf from relatores where id_relator='$idrelator' ";
 			$result = mysqli_query($conexao, $sql);
 			$mostrar = mysqli_fetch_row($result);
 			$dados = array(

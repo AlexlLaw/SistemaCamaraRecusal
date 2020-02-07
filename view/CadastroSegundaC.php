@@ -1,8 +1,6 @@
 <?php
-
 session_start();
-if (isset($_SESSION['usuario'])) {
-?>
+if (isset($_SESSION['usuario'])) { ?>
     <!--verificação para saber se existe usuário logado-->
     <!DOCTYPE html>
     <html>
@@ -12,7 +10,6 @@ if (isset($_SESSION['usuario'])) {
         <?php require_once "menu.php"; ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
     </head>
 
     <body>

@@ -1,13 +1,9 @@
 <?php require_once "dependencias.php"?>
 <?php
 session_start();
-if (isset($_SESSION['usuario'])) {
-
-    ?>
-
+if (isset($_SESSION['usuario'])) {?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title></title>
     <?php require_once "menu.php";?>
@@ -16,12 +12,7 @@ if (isset($_SESSION['usuario'])) {
         background-color: #000000;
     }
     </style>
-
-
 <body>
-
-
-
     <div class="container" style="margin-top: 20px;">
         <div class="page-header">
             <h2>Câmaras Recursais</h2>
@@ -29,7 +20,6 @@ if (isset($_SESSION['usuario'])) {
         <div class="row">
             <div class="col-sm-4">
                 <h1 style="font-size:1.8em; color:#707070">Competência</h1>
-
             </div>
             <div class="page-header">
                 <p style="text-align: justify; font-size: 15px;">
@@ -63,40 +53,14 @@ if (isset($_SESSION['usuario'])) {
     </div>
     </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-
-
 </html>
-
 <?php
 } else {
     header("location:../index.php");
 }
 
 ?>
-
 <script type="text/javascript">
 $(window).scroll(function() {
     if ($(document).scrollTop() > 150) {
