@@ -138,7 +138,7 @@ session_start();
             $.ajax({
                 type: "POST",
                 data: "idprocesso=" + idprocesso,
-                url: "../procedimentos/processos/obterDadosProcessos.php",
+                url: "../Repository/processos/obterDadosProcessos.php",
                 success: function(r) {
                     dado = jQuery.parseJSON(r);
                     $('#idprocessoU').val(dado['id_fornecedor']);
@@ -160,7 +160,7 @@ session_start();
                 $.ajax({
                     type: "POST",
                     data: "idprocesso=" + idprocesso,
-                    url: "../procedimentos/processos/eliminarProcessos.php",
+                    url: "../Repository/processos/eliminarProcessos.php",
                     success: function(r) {
                         if (r == 1) {
                             $('#tabelaProcessosLoad').load("processos/tabelaProcessos.php");
@@ -175,7 +175,7 @@ session_start();
             });
         }
     </script>
-    <!-- Código que está na div tabelaFornecedores -->
+   
     <script type="text/javascript">
         $(document).ready(function() {
             $('#buscar').click(function() {
@@ -190,14 +190,14 @@ session_start();
                 $.ajax({
                     type: "POST",
                     data: dados,
-                    url: "../procedimentos/processos/adicionarProcessos.php",
+                    url: "../Repository/processos/adicionarProcessos.php",
                     success: function(r) {
                         if (r != 1) {
                             $('#frmProcessos')[0].reset();
                             //para adicionar novo registro
                             alertify.success("Registro Adicionado");
                         } else {
-                            console.log(dados)
+                    
                             alertify.error("Não foi possível adicionar");
                             
                         }
@@ -224,7 +224,7 @@ session_start();
                 $.ajax({
                     type: "POST",
                     data: dados,
-                    url: "../procedimentos/processos/atualizarProcessos.php",
+                    url: "../Repository/processos/atualizarProcessos.php",
                     success: function(r) {
                         if (r == 1) {
                             $('#frmProcessos')[0].reset();

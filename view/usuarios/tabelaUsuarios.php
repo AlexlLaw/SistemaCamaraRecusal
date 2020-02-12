@@ -1,13 +1,14 @@
 <?php
-require_once "../../classes/conexao.php";
+require_once "../../conexao/conexao.php";
 $c = new conectar();
 $conexao = $c->conexao();
-$sql = "SELECT id,nome,user,email from usuarios";
+$sql = "SELECT * from usuarios";
 $result = mysqli_query($conexao, $sql);
 ?>
 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
 	<caption><label>Usuários :)</label></caption>
 	<tr>
+
 		<td>Nome</td>
 		<td>Usuário</td>
 		<td>Email</td>

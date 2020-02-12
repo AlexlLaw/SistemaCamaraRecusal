@@ -1,7 +1,6 @@
-<?php require_once "dependencias.php" ?>
+<?php require_once "../lib/dependencias.php" ?>
 <?php
-$t1 = 'fornecedores';
-$t2 = 'fornecedores2';
+
 
 session_start();
 //if (isset($_SESSION['usuario'])) {

@@ -1,5 +1,5 @@
 <?php
-require_once "../../classes/conexao.php";
+require_once "../../conexao/conexao.php";
 $c = new conectar();
 $conexao = $c->conexao();
 $filtro = $_POST['filtr'];
@@ -11,21 +11,26 @@ if (!isset($_POST['filtr'])) {
     $result = mysqli_query($conexao, $sql);
 }
 ?>
-<table class="table table-hover table-condensed table-bordered" style="text-align: center;">
-    <caption><label>Processos</label></caption>
-    <tr style="background-color: SlateGrey;">
-        <td>Nro FA</td>
-        <td>Consumidor</td>
-        <td>Fornecedor</td>
-        <td>Relator</td>
-        <td>Valor do 1º Grau</td>
-        <td>Valor do 2º Grau</td>
-        <td>Data</td>
-        <td>Ano</td>
-        <td>Recurso</td>
-        <td>Adicionar</td>
-        <td>Excluir</td>
-    </tr>
+<br>
+   <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" cellspacing="4">
+                <thead>
+                  <tr>
+                    <th>Nº FA</th>
+                    <th>consumidor</th>
+                    <th>Fornecedor</th>
+                    <th>Relator</th>
+                    <th>1º Grau</th>
+                    <th>2º Grau</th>
+                    <th>Data</th>
+                    <th>Ano</th>
+                    <th>Recurso</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
     <?php
     $total = 0;
     ?>
@@ -55,7 +60,7 @@ if (!isset($_POST['filtr'])) {
         <?php endwhile; ?>
         </tbody>
 </table>
-<table class="table table-hover table-condensed table-bordered" style="text-align: center;">
+<table class="table table-hover" style="text-align: center;" >
     <tr>
         <td style="background-color: SlateGrey;">Total 1ª Grau.</td>
     </tr>
@@ -76,7 +81,7 @@ if (!isset($_POST['filtr'])) {
         </td>
     </tr>
 </table>
-<table class="table table-hover table-condensed table-bordered" style="text-align: center;">
+<table class="table table-hover" style="text-align: center;">
     <tr>
         <td style="background-color: SlateGrey;">Total 2ª Grau.</td>
     </tr>
@@ -95,7 +100,7 @@ if (!isset($_POST['filtr'])) {
             R$ <?php echo number_format($valorFormatado, 2, ',', '.'); ?>
         </td>
     </tr>
-    <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
+    <table class="table table-hover  table-dark"  style="text-align: center;">
         <tr>
             <td style="background-color: SlateGrey;">Total dos valores no ano de 2020.</td>
         </tr>
@@ -122,7 +127,7 @@ if (!isset($_POST['filtr'])) {
     </td>
     <br>
     <br>
-    </div>S
+    </div>
     <table style="text-align: center; height: 100px ;">
         <tr>
             <td style=" text-decoration:none color:#FFF;" ><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1; ?>">Total de valores por relator no mês de janeiro.

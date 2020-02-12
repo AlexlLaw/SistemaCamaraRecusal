@@ -1,13 +1,13 @@
 <?php
-require_once "classes/conexao.php";
+require_once "conexao/conexao.php";
 $obj = new conectar();
 $conexao = $obj->conexao();
 $sql = "SELECT * from usuarios where email='admin'";
 $result = mysqli_query($conexao, $sql);
-/*$validar = 0;
+$validar = 0;
 	if(mysqli_num_rows($result) > 0){
 		$validar = 1;
-	}*/
+	}
 
 ?>
 <!DOCTYPE html>
@@ -39,21 +39,27 @@ $result = mysqli_query($conexao, $sql);
 					<input type="password" name="senha" id="senha" class="form-control ">
 					<p></p>
 					<span class="btn btn-primary " id="entrarSistema">Entrar</span>
-					<?php //if(!$validar): 
+					<?php if(!$validar): 
 					?>
-					<a href="registrar.php" class="btn btn-danger ">Registrar</a>
-					<?php //	endif; ?>
+				
+					<?php 	endif; ?>
 				</form>
+			
 			</div>
 		</div>
 	</div>
+	<script src="lib/jquery-3.2.1.min.js"></script>
+	<script src="js/funcoes.js"></script>
 	<script type="text/javascript">
+	
 		$(document).ready(function() {
 			$('#entrarSistema').click(function() {
 				vazios = validarFormVazio('frmLogin');
-				if (vazios > 0) {
+				
+				if (vazios < 0) {
 					alert("Preencha os campos!!");
 					return false;
+				
 				}
 				dados = $('#frmLogin').serialize();
 				$.ajax({

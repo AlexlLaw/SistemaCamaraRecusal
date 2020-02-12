@@ -1,5 +1,7 @@
 <?php
-require_once "../../classes/conexao.php";
+require_once "../../conexao/conexao.php";
+include "../../lib/dependencias.php";
+
 $c = new conectar();
 $conexao = $c->conexao();
 session_start();
@@ -52,7 +54,7 @@ session_start();
 
 function ListarNomeRelator()
 {
-    require_once "../../classes/conexao.php";
+    require_once "../../conexao/conexao.php";
     $c = new conectar();
     $conexao = $c->conexao();
     $sql = "SELECT relator FROM processos group by relator ORDER BY relator desc; ";
@@ -62,7 +64,7 @@ function ListarNomeRelator()
 
 function TotalProcessosRelator($relator, $filtro, $filtro1)
 {
-    require_once "../../classes/conexao.php";
+    require_once "../../conexao/conexao.php";
     $c = new conectar();
     $conexao = $c->conexao();
     $sql6 = "SELECT COUNT(relator) AS Qtd FROM  processos where relator = '$relator'and data_jugamento between '$filtro' and '$filtro1';";
@@ -75,7 +77,7 @@ function TotalProcessosRelator($relator, $filtro, $filtro1)
 
 function ValorRelator($relator, $filtro, $filtro1)
 {
-    require_once "../../classes/conexao.php";
+    require_once "../../conexao/conexao.php";
     $c = new conectar();
     $conexao = $c->conexao();
     $sql5 = "SELECT sum(ValorGrau_1) as ValorGrau_2 from processos where relator = '$relator'and data_jugamento between '$filtro' and '$filtro1' group by relator ORDER BY relator asc";

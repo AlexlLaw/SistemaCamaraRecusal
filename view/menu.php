@@ -1,4 +1,6 @@
-<?php require_once "dependencias.php" ?>
+<?php
+ include "../lib/dependencias.php";
+  ?>
 <!DOCTYPE html>
 <html>
 

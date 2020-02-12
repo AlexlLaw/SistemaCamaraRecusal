@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "../../classes/conexao.php";
-require_once "../../classes/processos.php";
+require_once "../../conexao/conexao.php;"
+require_once "../../model/processos.php";
 $idusuario = $_SESSION['iduser'];
 $obj = new processos();
 $dados = array(
