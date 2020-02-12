@@ -1,5 +1,5 @@
 <?php
-require_once "conexao/conexao.php";
+require_once "../conexao/conexao.php";
 $obj = new conectar();
 $conexao = $obj->conexao();
 $sql = "SELECT * from usuarios where email='admin'";

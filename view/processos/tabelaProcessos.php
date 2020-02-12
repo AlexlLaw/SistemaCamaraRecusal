@@ -1,5 +1,6 @@
 <?php
 require_once "../../conexao/conexao.php";
+$camara = $_GET['camara'];
 $c = new conectar();
 $conexao = $c->conexao();
 $filtro = $_POST['filtr'];
@@ -7,7 +8,7 @@ $filtro1 = $_POST['filtr1'];
 if (!isset($_POST['filtr'])) {
     echo 'vazio';
 } else {
-    $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, ValorGrau_1,ValorGrau_2, data_jugamento, ano, recurso  from processos where data_jugamento between '$filtro' and '$filtro1'";
+    $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, ValorGrau_1,ValorGrau_2, data_jugamento, ano, recurso  from processos where data_jugamento between '$filtro' and '$filtro1' and camara = '$camara'";
     $result = mysqli_query($conexao, $sql);
 }
 ?>
@@ -102,13 +103,13 @@ if (!isset($_POST['filtr'])) {
     </tr>
     <table class="table table-hover  table-dark"  style="text-align: center;">
         <tr>
-            <td style="background-color: SlateGrey;">Total dos valores no ano de 2020.</td>
+            <td style="background-color: SlateGrey;">Total dos Valores.</td>
         </tr>
         <tr>
             <td>
                 <?php
                 //código php para somar o total dos valores .
-                $sql2 = "SELECT SUM(ValorGrau_2) as soma FROM processos WHERE  Year(data_jugamento) = '2020'";
+                $sql2 = "SELECT SUM(ValorGrau_2) as soma FROM processos WHERE data_jugamento between '$filtro' and '$filtro1'";
                 $buscar2 = mysqli_query($conexao, $sql2);
                 $valor = 0;
                 while ($array2 = mysqli_fetch_array($buscar2)) {
@@ -121,7 +122,7 @@ if (!isset($_POST['filtr'])) {
         </div>
     </table>
     <td style="align:center;">
-        <a href="../procedimentos/pdf/criarRelatorioJaneiroPdf.php" class="btn btn-danger btn-sm">
+        <a href="../Repository/pdf/criarRelatorioJaneiroPdf.php" class="btn btn-danger btn-sm">
             Imprimir <span class="glyphicon glyphicon-print"></span>
         </a>
     </td>
@@ -130,7 +131,7 @@ if (!isset($_POST['filtr'])) {
     </div>
     <table style="text-align: center; height: 100px ;">
         <tr>
-            <td style=" text-decoration:none color:#FFF;" ><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1; ?>">Total de valores por relator no mês de janeiro.
+            <td style=" text-decoration:none color:#FFF;" ><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1; ?>"">Total de valores por relator no mês de janeiro.
                     <!--target="_blank--></a></td>
         </tr>
     </table>

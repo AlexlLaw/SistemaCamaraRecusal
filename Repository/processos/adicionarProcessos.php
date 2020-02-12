@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "../../conexao/conexao.php;"
-require_once "../../model/processos.php";
+require_once "../../conexao/conexao.php";
+require_once "../../controller/processos.php";
 $idusuario = $_SESSION['iduser'];
 $obj = new processos();
 $dados = array(
@@ -11,9 +11,10 @@ $dados = array(
     $_POST['fornecedor'],
     $_POST['relator'],
     $_POST['ValorGrau_1'],
-    $_POST['valorGrau_2'],
+    $_POST['ValorGrau_2'],
     $_POST['data_jugamento'],
     $_POST['ano'],
-    $_POST['recurso']
+    $_POST['recurso'],
+    $_POST['camara']
 );
 echo $obj->adicionar($dados);

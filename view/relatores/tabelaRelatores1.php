@@ -1,7 +1,6 @@
 <?php
 require_once "../../conexao/conexao.php";
-include "../../lib/dependencias.php";
-
+require_once "../../lib/dependencias.php";
 $c = new conectar();
 $conexao = $c->conexao();
 session_start();
@@ -13,7 +12,7 @@ session_start();
 
     <head>
         <title>relatores</title>
-        <?php require_once "../menu.php"; ?>
+        <?php require_once "menu.php"; ?>
     </head>
 
     <body>

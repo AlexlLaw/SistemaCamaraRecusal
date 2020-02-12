@@ -12,7 +12,7 @@ session_start();
 
     <head>
         <title></title>
-        <?php require_once "menu.php"; ?>
+        <?php require_once "templates/menu.php"; ?>
         <style type="text/css">
             .bt-primary {
                 background-color: #000000;
@@ -39,7 +39,7 @@ session_start();
                             </div>
                             <div class="card-body bg-dark">
                                 <p class="card-text">Nesta sessão o acesso a inserção de dados constantes nos processos das decisões da 1ª câmara</p>
-                                <a href="cadastroPrimeiraC.php" class="btn btn-primary">entrar</a>
+                                <a href="cadastroPrimeiraC.php?camara=1" class="btn btn-primary">entrar</a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ session_start();
                             </div>
                             <div class="card-body">
                                 <p class="card-text">Nesta sessão o acesso a inserção de dados constantes nos processos das decisões da 2ª câmara</p>
-                                <a href="CadastroSegundaC.php" class="btn btn-primary">entrar</a>
+                                <a href="CadastroPrimeiraC.php?camara=2" class="btn btn-primary">entrar</a>
                             </div>
                         </div>
                     </div>

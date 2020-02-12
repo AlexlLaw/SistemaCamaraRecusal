@@ -1,5 +1,5 @@
 <?php
-
+$camara = $_GET['camara'];
 session_start();
 //if (isset($_SESSION['usuario'])) {
 ?>
@@ -8,8 +8,8 @@ session_start();
     <html>
 
     <head>
-        <title>Processos Janeiro</title>
-        <?php require_once "menu.php"; ?>
+        <title>Processos</title>
+        <?php require_once "templates/menu.php"; ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -54,10 +54,19 @@ session_start();
                         <input type="date" class="form-control input-sm" id="data_jugamento" name="data_jugamento">
                         <label>Ano</label>
                         <input type="number" class="form-control input-sm" id="ano" name="ano">
+                        <label>Camara Recusal</label>
+                        <select hidden class="form-control input-sm" id="camara" name="camara">
+                            <?php if($camara == 1){
+                                echo '<option value=1>1º Camara</option>';
+                            }else{
+                                echo '<option value=2>2º Camara</option>';
+                            }
+                                ?>
+                        </select>
                         <p></p>
                         <!-- essa span é onde está o botão salvar. Ao ser clicado será acionado o id btnAdicionarFornecedores -->
                         <span class="btn btn-primary" id="buscar">Salvar</span>
-                        <a type="button" class="btn btn-danger" href="inicio.php">voltar</a>
+                        <a type="button" class="btn btn-danger" href="inicio.php">Voltar</a>
                     </form>
                 </div>
                 <!--div que carrega do lado direito da página e recebe os valores digitados do lado esquerdo. Note que uma tem col-sm-4 e a outra col-sm-8, o que soma 12-->
@@ -87,7 +96,7 @@ session_start();
                     <div class="modal-body">
                         <form id="frmProcessosU">
                             <input type="text" hidden="" id="idprocessoU" name="idprocessoU">
-                            <label>nroFA</label>
+                            <label>N° FA</label>
                             <input type="number" class="form-control input-sm" id="nrofaU" name="nrofaU">
                             <label>Consumidor</label>
                             <input type="text" class="form-control input-sm" id="consumidorU" name="consumidorU">
@@ -116,7 +125,7 @@ session_start();
                 </div>
             </div>
         </div>
-        <?php require_once "footer.php"; ?>
+        <?php require_once "templates/footer.php"; ?>
     </body>
 
     </html>
@@ -145,12 +154,12 @@ session_start();
                     $('#nrofaU').val(dado['nrofa']);
                     $('#consumidorU').val(dado['consumidor']);
                     $('#fornecedorU').val(dado['fornecedor']);
-                    $('#relatorU').val(dado['relator']);
                     $('#ValorGrau_1U').val(dado['ValorGrau_1']);
                     $('#ValorGrau_2U').val(dado['ValorGrau_2']);
+                    $('#recursoU').val(dado['recurso']);
+                    $('#relatorU').val(dado['relator']);
                     $('#data_jugamentoU').val(dado['data_jugamento']);
                     $('#anoU').val(dado['ano']);
-                    $('#recursoU').val(dado['recurso']);
                 }
             });
         }
@@ -175,7 +184,7 @@ session_start();
             });
         }
     </script>
-   
+   <!-- Adicionar processos -->
     <script type="text/javascript">
         $(document).ready(function() {
             $('#buscar').click(function() {
@@ -209,7 +218,7 @@ session_start();
             e.preventDefault();
             let filtr = $("#filtro1").val();
             let filtr1 = $("#filtro2").val();
-            $.post('processos/tabelaProcessos.php', {
+            $.post('processos/tabelaProcessos.php?camara='+ <?php echo $camara?>, {
                 filtr: filtr,
                 filtr1: filtr1
             }, function(data) {
