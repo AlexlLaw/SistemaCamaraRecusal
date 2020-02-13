@@ -1,52 +1,45 @@
 <?php
-require_once "../../conexao/conexao.php";
-$camara = $_GET['camara'];
-$c = new conectar();
-$conexao = $c->conexao();
+session_start();
+require_once "../../Repository/processos/Relatorio.php";
+$camara = $_SESSION['camara'];
 $filtro = $_POST['filtr'];
 $filtro1 = $_POST['filtr1'];
-if (!isset($_POST['filtr'])) {
-    echo 'vazio';
-} else {
-    $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, ValorGrau_1,ValorGrau_2, data_jugamento, ano, recurso  from processos where data_jugamento between '$filtro' and '$filtro1' and camara = '$camara'";
-    $result = mysqli_query($conexao, $sql);
-}
+$grau1 = totalGrau1($filtro, $filtro1);
+$grau2 = totalGrau2($filtro, $filtro1);
+$totalValores = totalValores($filtro, $filtro1);
+$result = todosProcessos($filtro, $filtro1);
 ?>
 <br>
-   
-              <table class="table table-bordered" id="dataTable" cellspacing="4">
-                <thead>
-                  <tr>
-                    <th>Nº FA</th>
-                    <th>consumidor</th>
-                    <th>Fornecedor</th>
-                    <th>Relator</th>
-                    <th>1º Grau</th>
-                    <th>2º Grau</th>
-                    <th>Data</th>
-                    <th>Ano</th>
-                    <th>Recurso</th>
-                    <th>Editar</th>
-                    <th>Excluir</th>
-                  </tr>
-                </thead>
-                
-                <tbody>
-    <?php
-    $total = 0;
-    ?>
-    <?php while ($mostrar = mysqli_fetch_row($result)) : ?>
-        <tbody id="myTable">
-            <tr>
-                <td><?php echo $mostrar[1]; ?></td>
-                <td><?php echo $mostrar[2]; ?></td>
-                <td><?php echo $mostrar[3]; ?></td>
-                <td><?php echo $mostrar[4]; ?></td>
-                <td> R$<?php echo $mostrar[5]; ?></td>
-                <td>R$<?php echo $mostrar[6]; ?></td>
-                <td><?php echo date("d/m/Y", strtotime($mostrar[7])) ?></td>
-                <td><?php echo $mostrar[8]; ?></td>
-                <td><?php echo $mostrar[9]; ?></td>
+<table class="table table-bordered" id="dataTable" cellspacing="4">
+    <thead>
+        <tr>
+            <th>Nº FA</th>
+            <th>consumidor</th>
+            <th>Fornecedor</th>
+            <th>Relator</th>
+            <th>1º Grau</th>
+            <th>2º Grau</th>
+            <th>Data</th>
+            <th>Ano</th>
+            <th>Recurso</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php while ($mostrar = mysqli_fetch_row($result)) : ?>
+    <tbody id="myTable">
+        <tr>
+            <td><?php echo $mostrar[1]; ?></td>
+            <td><?php echo $mostrar[2]; ?></td>
+            <td><?php echo $mostrar[3]; ?></td>
+            <td><?php echo $mostrar[4]; ?></td>
+            <td> R$<?php echo $mostrar[5]; ?></td>
+            <td>R$<?php echo $mostrar[6]; ?></td>
+            <td><?php echo date("d/m/Y", strtotime($mostrar[7])) ?></td>
+            <td><?php echo $mostrar[8]; ?></td>
+            <td><?php echo $mostrar[9]; ?></td>
+            <?php if ($_SESSION['camara'] === $mostrar[10]) { ?>
                 <td>
                     <span class="btn btn-warning btn-xs" data-toggle="modal" data-target="#abremodalProcessosUpdate" onclick="adicionarDado('<?php echo $mostrar[0]; ?>')">
                         <span class="glyphicon glyphicon-pencil"></span>
@@ -57,28 +50,21 @@ if (!isset($_POST['filtr'])) {
                         <span class="glyphicon glyphicon-remove"></span>
                     </span>
                 </td>
-            </tr>
-        <?php endwhile; ?>
-        </tbody>
+            <?php } else { ?>
+                <td> </td>
+                <td> </td>
+            <?php } ?>
+        </tr>
+    <?php endwhile; ?>
+    </tbody>
 </table>
-<table class="table table-hover" style="text-align: center;" >
+<table class="table table-hover" style="text-align: center;">
     <tr>
         <td style="background-color: SlateGrey;">Total 1ª Grau.</td>
     </tr>
     <tr>
         <td>
-            <?php
-            //código php para somar os valores da primeira sessão se o mês for Janeiro.
-            $total2Grau = "SELECT sum(ValorGrau_1) as ValorGrau_1 from processos where data_jugamento between '$filtro' and '$filtro1'";
-            //SELECT sum(valor) as valor from processos where camara='1'"
-            $buscarDb = mysqli_query($conexao, $total2Grau);
-            $valor = 0;
-            while ($array3 = mysqli_fetch_array($buscarDb)) {
-                $valor = $valor + $array3['ValorGrau_1'];
-                $valorFormatado = str_replace(',', '.', str_replace('.', '', $valor));
-            ?>
-            <?php } ?>
-            R$ <?php echo number_format($valorFormatado, 2, ',', '.'); ?>
+            R$ <?php echo $grau1; ?>
         </td>
     </tr>
 </table>
@@ -88,35 +74,16 @@ if (!isset($_POST['filtr'])) {
     </tr>
     <tr>
         <td>
-            <?php
-            //código php para somar os valores da segunda sessão 
-            $total2Grau = "SELECT sum(ValorGrau_2)  as ValorGrau_2 from processos where data_jugamento between '$filtro' and '$filtro1'";
-            $buscarDb = mysqli_query($conexao, $total2Grau);
-            $valor = 0;
-            while ($array3 = mysqli_fetch_array($buscarDb)) {
-                $valor = $valor + $array3['ValorGrau_2'];
-                $valorFormatado = str_replace(',', '.', str_replace('.', '', $valor));
-            ?>
-            <?php } ?>
-            R$ <?php echo number_format($valorFormatado, 2, ',', '.'); ?>
+            R$ <?php echo $grau2; ?>
         </td>
     </tr>
-    <table class="table table-hover  table-dark"  style="text-align: center;">
+    <table class="table table-hover  table-dark" style="text-align: center;">
         <tr>
             <td style="background-color: SlateGrey;">Total dos Valores.</td>
         </tr>
         <tr>
             <td>
-                <?php
-                //código php para somar o total dos valores .
-                $sql2 = "SELECT SUM(ValorGrau_2) as soma FROM processos WHERE data_jugamento between '$filtro' and '$filtro1'";
-                $buscar2 = mysqli_query($conexao, $sql2);
-                $valor = 0;
-                while ($array2 = mysqli_fetch_array($buscar2)) {
-                    $valor = $valor + $array2['soma'];
-                ?>
-                <?php } ?>
-                R$ <?php echo number_format($valor, 2, ',', '.'); ?>
+                R$ <?php echo $totalValores; ?>
             </td>
         </tr>
         </div>
@@ -131,7 +98,7 @@ if (!isset($_POST['filtr'])) {
     </div>
     <table style="text-align: center; height: 100px ;">
         <tr>
-            <td style=" text-decoration:none color:#FFF;" ><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1; ?>">Total de valores por relator no mês
+            <td style=" text-decoration:none color:#FFF;"><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1; ?>">Total de valores por relator no mês
                     <!--target="_blank--></a></td>
         </tr>
     </table>

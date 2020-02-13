@@ -1,13 +1,8 @@
 <?php
 require_once "../conexao/conexao.php";
+require_once "../Repository/login/ValidacaoUser.php";
 $obj = new conectar();
 $conexao = $obj->conexao();
-$sql = "SELECT * from usuarios where email='admin'";
-$result = mysqli_query($conexao, $sql);
-$validar = 0;
-	if(mysqli_num_rows($result) > 0){
-		$validar = 1;
-	}
 
 ?>
 <!DOCTYPE html>
@@ -32,49 +27,31 @@ $validar = 0;
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header"> <img src="img/logoProcon.png" width="100px" height="70px" class="rounded mx-auto d-block" alt=""></div>
 			<div class="card-body">
-				<form id="frmLogin">
-					<label>Email</label>
-					<input type="text" class="form-control " name="email" id="email">
-					<label>Senha</label>
-					<input type="password" name="senha" id="senha" class="form-control">
-					<p></p>
-					<span class="btn btn-primary " id="entrarSistema">Entrar</span>
-					<?php if(!$validar): 
-					?>
-				
-					<?php 	endif; ?>
+				<form method="POST" action="index.php" id="frmLogin">
+					<div class="form-group">
+						<label for="email">Usuario</label>
+						<input type="text" class="form-control" id="usuario" autocomplete="on" placeholder="Seu Usuario" name="usuario">
+					</div>
+					<div class="form-group">
+						<label for="psw">Senha</label>
+						<input type="password" class="form-control" id="psw" placeholder="Senha" name="senha">
+					</div>
+					<input id="" class="btn btn-primary" type="submit" value="Entrar" name="confirmar" <?php validarUser(); ?>>
 				</form>
-			
+				<!-- <span class="btn btn-primary " id="entrarSistema" <?php //validarUser();?>>Entrar</span> -->
 			</div>
 		</div>
 	</div>
 	<script src="lib/jquery-3.2.1.min.js"></script>
 	<script src="js/funcoes.js"></script>
 	<script type="text/javascript">
-	
 		$(document).ready(function() {
 			$('#entrarSistema').click(function() {
 				vazios = validarFormVazio('frmLogin');
-				
 				if (vazios < 0) {
 					alert("Preencha os campos!!");
 					return false;
-				
 				}
-				dados = $('#frmLogin').serialize();
-				$.ajax({
-					type: "POST",
-					data: dados,
-					url: "procedimentos/login/login.php",
-					success: function(r) {
-						//alert(r);
-						if (r == 1) {
-							window.location = "view/inicio.php";
-						} else {
-							alert("Acesso Negado!!");
-						}
-					}
-				});
 			});
 		});
 	</script>

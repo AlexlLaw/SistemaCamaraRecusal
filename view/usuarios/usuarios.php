@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../lib/dependencias.php"
+require_once "../../lib/dependencias.php"
 ?>
 <!DOCTYPE html>
 <html>

@@ -6,7 +6,7 @@ if (isset($_SESSION['usuario'])) { ?>
 
 	<head>
 		<title>clientes</title>
-		<?php require_once "menu.php"; ?>
+		<?php require_once "templates/menu.php"; ?>
 	</head>
 
 	<body>

@@ -1,10 +1,8 @@
-<?php require_once "../lib/dependencias.php" ?>
-<?php
-
-
+<?php 
+require_once "../lib/dependencias.php" ;
+require_once "../Repository/login/protect.php";
+//protect();
 session_start();
-//if (isset($_SESSION['usuario'])) {
-
 ?>
 
     <!DOCTYPE html>
@@ -37,7 +35,7 @@ session_start();
   <h2 class="display-6">Primeira Câmara Recursal</h2>
   <p class="lead">Nesta sessão o acesso a inserção de dados constantes nos processos das decisões da 1ª câmara</p>
   <hr class="my-4">
-  <a href="cadastroPrimeiraC.php?camara=1" class="btn btn-primary">entrar</a>
+  <a href="cadastroPrimeiraC.php" class="btn btn-primary">entrar</a>
 </div>
                     </div>
                   
@@ -47,7 +45,7 @@ session_start();
   <h2 class="display-6">Segunda Câmara Recursal</h2>
   <p class="lead">Nesta sessão o acesso a inserção de dados constantes nos processos das decisões da 2ª câmara</p>
   <hr class="my-4">
-  <a href="cadastroPrimeiraC.php?camara=2" class="btn btn-primary">entrar</a>
+  <a href="cadastroPrimeiraC.php" class="btn btn-primary">entrar</a>
 </div>
                             </div>
                         </div>
@@ -61,11 +59,6 @@ session_start();
     </body>
     <?php require_once "templates/footer.php"; ?>
     </html>
-<?php
-/*} else {
-    header("location:../index.php");
-}*/
-?>
 <script type="text/javascript">
     $(window).scroll(function() {
         if ($(document).scrollTop() > 150) {

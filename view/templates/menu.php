@@ -1,5 +1,5 @@
 <?php
- require_once "../lib/dependencias.php";
+ require_once "../../lib/dependencias.php";
   ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,7 @@
                     <img src="../img/marca_procon.jpg" width="100px" height="70px" class="d-inline-block align-top" alt="">
                     <ul class="nav navbar-nav navbar-right">
                         <!--deixa os ícones do menu posicionados à direita -->
-                        <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span>
+                        <li class="active"><a href="../inicio.php"><span class="glyphicon glyphicon-home"></span>
                                 Inicio</a>
                         </li>
                         <li class="dropdown">
@@ -43,7 +43,7 @@
                             </ul>
                         </li>
                         </li>
-                        <li><a href="inicio2.php"><span class="glyphicon glyphicon-home"></span>
+                        <li><a href="../view/sobre.php"><span class="glyphicon glyphicon-home"></span>
                                 Sobre</a>
                         </li>
                         <li class="dropdown">
@@ -53,7 +53,7 @@
                                 <?php //if ($_SESSION['usuario'] == "admin") : ?>
                                     <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
                                             Usuários</a></li>
-                                <?php// endif; ?>
+                                <?php // endif; ?>
                                 <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>

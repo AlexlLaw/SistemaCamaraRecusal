@@ -1,6 +1,4 @@
 <?php
-$camara = $_GET['camara'];
-
 session_start();
 //if (isset($_SESSION['usuario'])) {
 ?>
@@ -10,7 +8,7 @@ session_start();
 
     <head>
         <title>Processos</title>
-        <?php require_once "templates/menu.php"; ?>
+        <?php require_once "../../menu.php"; ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -57,7 +55,7 @@ session_start();
                         <input type="number" class="form-control input-sm" id="ano" name="ano">
                       
                         
-                         <input type="text" value="<?php echo $camara ?>" name="camara" id="camara">
+                         <input type="hidden" value="<?php echo $camara ?>" name="camara" id="camara">
                         <p></p>
                         <!-- essa span é onde está o botão salvar. Ao ser clicado será acionado o id btnAdicionarFornecedores -->
                         <span class="btn btn-primary" id="buscar">Salvar</span>
@@ -213,7 +211,7 @@ session_start();
             e.preventDefault();
             let filtr = $("#filtro1").val();
             let filtr1 = $("#filtro2").val();
-            $.post('processos/tabelaProcessos.php?camara='+ <?php echo $camara?>, {
+            $.post('processos/tabelaProcessos.php', {
                 filtr: filtr,
                 filtr1: filtr1
             }, function(data) {

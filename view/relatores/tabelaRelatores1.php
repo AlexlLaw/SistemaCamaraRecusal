@@ -1,6 +1,6 @@
 <?php
 require_once "../../conexao/conexao.php";
-
+require_once "../../Repository/processos/relatorioTotal.php";
 $c = new conectar();
 $conexao = $c->conexao();
 session_start();
@@ -11,17 +11,11 @@ session_start();
     <html>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
     <head>
         <title>relatores</title>
-        <?php 
-        
-         ?>
     </head>
-
     <body>
         <div class="container">
             <h1>Relatores</h1>
@@ -32,11 +26,11 @@ session_start();
                         <table class="table table-hover" style="text-align: center;">
                             <caption><label>Total por Relator</label></caption>
                             <tr>
-                                <td>--</td>
+                                <td>Relator</td>
                                 <td>Total de Processos por relator</td>
                                 <td>Valor por Relator</td>
                             </tr>
-                            <?php $result = ListarNomeRelator();
+                            <?php $result = ListarNomeRelator($filtro, $filtro1);
                             while ($linha = $result->fetch_assoc()) {
                                 $resultV = ValorRelator($linha['relator'], $filtro, $filtro1);
                                 $resultT = TotalProcessosRelator($linha['relator'], $filtro, $filtro1); ?>
@@ -54,44 +48,4 @@ session_start();
             </div>
         </div>
     </body>
-
     </html>
-    <?php
-
-function ListarNomeRelator()
-{
-    require_once "../../conexao/conexao.php";
-    $c = new conectar();
-    $conexao = $c->conexao();
-    $sql = "SELECT relator FROM processos group by relator ORDER BY relator desc; ";
-    $buscarrelator = mysqli_query($conexao, $sql);
-    return $buscarrelator;
-}
-
-function TotalProcessosRelator($relator, $filtro, $filtro1)
-{
-    require_once "../../conexao/conexao.php";
-    $c = new conectar();
-    $conexao = $c->conexao();
-    $sql6 = "SELECT COUNT(relator) AS Qtd FROM  processos where relator = '$relator'and data_jugamento between '$filtro' and '$filtro1';";
-    $buscar = mysqli_query($conexao, $sql6);
-    while ($l = $buscar->fetch_assoc()) {
-        break;
-    }
-    return $l['Qtd'];
-}
-
-function ValorRelator($relator, $filtro, $filtro1)
-{
-    require_once "../../conexao/conexao.php";
-    $c = new conectar();
-    $conexao = $c->conexao();
-    $sql5 = "SELECT sum(ValorGrau_1) as ValorGrau_2 from processos where relator = '$relator'and data_jugamento between '$filtro' and '$filtro1' group by relator ORDER BY relator asc";
-    $buscarrelator = mysqli_query($conexao, $sql5);
-    $valor = 0;
-    while ($array3 = $buscarrelator->fetch_assoc()) {
-        $valor = $valor + $array3['valor_2'];
-    }
-    return $valor;
-}
-?>
