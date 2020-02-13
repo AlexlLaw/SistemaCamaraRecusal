@@ -13,7 +13,7 @@ if (!isset($_POST['filtr'])) {
 }
 ?>
 <br>
-   <div class="table-responsive">
+   
               <table class="table table-bordered" id="dataTable" cellspacing="4">
                 <thead>
                   <tr>

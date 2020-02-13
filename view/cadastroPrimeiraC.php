@@ -1,5 +1,6 @@
 <?php
 $camara = $_GET['camara'];
+
 session_start();
 //if (isset($_SESSION['usuario'])) {
 ?>
@@ -54,15 +55,9 @@ session_start();
                         <input type="date" class="form-control input-sm" id="data_jugamento" name="data_jugamento">
                         <label>Ano</label>
                         <input type="number" class="form-control input-sm" id="ano" name="ano">
-                        <label>Camara Recusal</label>
-                        <select hidden class="form-control input-sm" id="camara" name="camara">
-                            <?php if($camara == 1){
-                                echo '<option value=1>1º Camara</option>';
-                            }else{
-                                echo '<option value=2>2º Camara</option>';
-                            }
-                                ?>
-                        </select>
+                      
+                        
+                         <input type="hidden" value="<?php echo $camara ?>" name="camara" id="camara">
                         <p></p>
                         <!-- essa span é onde está o botão salvar. Ao ser clicado será acionado o id btnAdicionarFornecedores -->
                         <span class="btn btn-primary" id="buscar">Salvar</span>
