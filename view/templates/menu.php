@@ -51,7 +51,7 @@
                                 Usuario: <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <?php //if ($_SESSION['usuario'] == "admin") : ?>
-                                    <li> <a href="usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
+                                    <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
                                             Usuários</a></li>
                                 <?php// endif; ?>
                                 <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>

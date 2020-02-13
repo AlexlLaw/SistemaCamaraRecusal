@@ -57,7 +57,7 @@ session_start();
                         <input type="number" class="form-control input-sm" id="ano" name="ano">
                       
                         
-                         <input type="hidden" value="<?php echo $camara ?>" name="camara" id="camara">
+                         <input type="text" value="<?php echo $camara ?>" name="camara" id="camara">
                         <p></p>
                         <!-- essa span é onde está o botão salvar. Ao ser clicado será acionado o id btnAdicionarFornecedores -->
                         <span class="btn btn-primary" id="buscar">Salvar</span>

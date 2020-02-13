@@ -1,8 +1,8 @@
 <?php
-require_once '../../lib/dompdf/autoload.inc.php';
+require_once("../../lib/dompdf");
 use Dompdf\Dompdf;
 $id = $_GET['idprocesso'];
-function file_get_contents_curl($url)
+/*function file_get_contents_curl($url)
 {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -11,17 +11,21 @@ function file_get_contents_curl($url)
     $dados = curl_exec($ch);
     curl_close($ch);
     return $dados;
-}
-$html = file_get_contents("http://localhost/sistema/view/processos/relatorioProcessosJaneiroPdf.php");
-// Instanciamos um objeto da classe DOMPDF.
-$pdf = new DOMPDF();
-// Definimos o tamanho do papel e orientação.
-$pdf->set_paper('A4', 'portrait');
-//$pdf->set_paper(array(0,0,104,250));
-// Carregar o conteúdo html.
-//$pdf->load_html(utf8_decode($html));
-$pdf->load_html($html);
-// Renderizar PDF.
-$pdf->render();
-// Enviamos pdf para navegador.
-$pdf->stream('relatorio');
+}*/
+
+$dompdf = new DOMPDF();
+
+/* Carrega seu HTML */
+$dompdf->load_html('<p>Adicione seu HTML aqui.</p>');
+
+/* Renderiza */
+$dompdf->render();
+
+/* Exibe */
+$dompdf->stream(
+    "saida.pdf", /* Nome do arquivo de saída */
+    array(
+        "Attachment" => false /* Para download, altere para true */
+    )
+);
+?>

@@ -1,13 +1,13 @@
 <?php
 session_start();
-//if(isset($_SESSION['usuario'])){
+require_once "../lib/dependencias.php"
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<title>usuarios</title>
-	<?php require_once "menu.php"; ?>
+	<?php require_once "../templates/menu.php"; ?>
 </head>
 
 <body>

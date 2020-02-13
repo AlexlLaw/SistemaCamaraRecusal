@@ -131,7 +131,7 @@ if (!isset($_POST['filtr'])) {
     </div>
     <table style="text-align: center; height: 100px ;">
         <tr>
-            <td style=" text-decoration:none color:#FFF;" ><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1; ?>"">Total de valores por relator no mês de janeiro.
+            <td style=" text-decoration:none color:#FFF;" ><a href="./relatores/tabelaRelatores1.php?filtro=<?php echo $filtro; ?>&filtro1=<?php echo $filtro1; ?>">Total de valores por relator no mês
                     <!--target="_blank--></a></td>
         </tr>
     </table>

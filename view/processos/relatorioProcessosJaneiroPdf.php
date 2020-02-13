@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../classes/conexao.php";
+require_once "../../conexao/conexao.php";
 $c = new conectar();
 $conexao = $c->conexao();
 $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor, relator, valor,valor_2, data1, ano, recurso  from fornecedores where data1 between ('2020/01/01') and ('2020/01/01')";

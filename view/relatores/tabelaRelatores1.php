@@ -1,18 +1,25 @@
 <?php
 require_once "../../conexao/conexao.php";
-require_once "../../lib/dependencias.php";
+
 $c = new conectar();
 $conexao = $c->conexao();
 session_start();
     $filtro = $_GET['filtro'];
-    $filtro1 = $_GET['filtro1']
+    $filtro1 = $_GET['filtro1'];
 ?>
     <!DOCTYPE html>
     <html>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <head>
         <title>relatores</title>
-        <?php require_once "menu.php"; ?>
+        <?php 
+        
+         ?>
     </head>
 
     <body>
@@ -22,7 +29,7 @@ session_start();
                 <div class="col-sm-10">
                     <div id="tabelaRelatoresLoad"></div>
                     <table>
-                        <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
+                        <table class="table table-hover" style="text-align: center;">
                             <caption><label>Total por Relator</label></caption>
                             <tr>
                                 <td>--</td>
@@ -49,7 +56,7 @@ session_start();
     </body>
 
     </html>
-<?php
+    <?php
 
 function ListarNomeRelator()
 {

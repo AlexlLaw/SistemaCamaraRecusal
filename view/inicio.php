@@ -21,7 +21,7 @@ session_start();
     </head>
 
     <body>
-        <div class="container" style=" margin-top:100px;">
+        <div class="container" style=" margin-top:10px;">
             <div class="container-fluid">
                 <div class="page-header">
                     <h1>Registro dos dados referentes aos processos de 1ª e 2ª Câmara</h1>
@@ -32,26 +32,23 @@ session_start();
                 <br />
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="card " style="border:1px solid; border-radius: 8px; padding: 10px;">
-                            <div class="card-header">
-                                <h2 class="card-title">Primeira Câmara Recursal</h2>
-                                <hr>
-                            </div>
-                            <div class="card-body bg-dark">
-                                <p class="card-text">Nesta sessão o acesso a inserção de dados constantes nos processos das decisões da 1ª câmara</p>
-                                <a href="cadastroPrimeiraC.php?camara=1" class="btn btn-primary">entrar</a>
-                            </div>
-                        </div>
+                   
+                    <div class="jumbotron">
+  <h2 class="display-6">Primeira Câmara Recursal</h2>
+  <p class="lead">Nesta sessão o acesso a inserção de dados constantes nos processos das decisões da 1ª câmara</p>
+  <hr class="my-4">
+  <a href="cadastroPrimeiraC.php?camara=1" class="btn btn-primary">entrar</a>
+</div>
                     </div>
+                  
+                    
                     <div class="col-sm-6">
-                        <div class="card " style="border:1px solid; border-radius: 8px; padding: 10px;">
-                            <div class="card-header">
-                                <h2 class="card-title">Segunda Câmara Recursal</h2>
-                                <hr>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Nesta sessão o acesso a inserção de dados constantes nos processos das decisões da 2ª câmara</p>
-                                <a href="CadastroPrimeiraC.php?camara=2" class="btn btn-primary">entrar</a>
+                    <div class="jumbotron">
+  <h2 class="display-6">Segunda Câmara Recursal</h2>
+  <p class="lead">Nesta sessão o acesso a inserção de dados constantes nos processos das decisões da 2ª câmara</p>
+  <hr class="my-4">
+  <a href="cadastroPrimeiraC.php?camara=2" class="btn btn-primary">entrar</a>
+</div>
                             </div>
                         </div>
                     </div>
@@ -62,7 +59,7 @@ session_start();
         </div>
         </div>
     </body>
-
+    <?php require_once "templates/footer.php"; ?>
     </html>
 <?php
 /*} else {

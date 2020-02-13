@@ -36,7 +36,7 @@ $validar = 0;
 					<label>Email</label>
 					<input type="text" class="form-control " name="email" id="email">
 					<label>Senha</label>
-					<input type="password" name="senha" id="senha" class="form-control ">
+					<input type="password" name="senha" id="senha" class="form-control">
 					<p></p>
 					<span class="btn btn-primary " id="entrarSistema">Entrar</span>
 					<?php if(!$validar): 
