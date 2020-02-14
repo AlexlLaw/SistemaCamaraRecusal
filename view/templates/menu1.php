@@ -1,19 +1,12 @@
-<?php
-require_once "../../conexao/conexao.php";
-require_once "../../Repository/processos/relatorioTotal.php";
-$c = new conectar();
-$conexao = $c->conexao();
-session_start();
-    $filtro = $_GET['filtro'];
-    $filtro1 = $_GET['filtro1'];
-?>
-    <!DOCTYPE html>
-    <html>
-    
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        
-        <link rel="stylesheet" type="text/css" href="../../lib/alertifyjs/css/themes/default.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../../lib/alertifyjs/css/alertify.css">
+<link rel="stylesheet" type="text/css" href="../../lib/alertifyjs/css/themes/default.css">
 <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../lib/select2/css/select2.css">
 <link rel="stylesheet" type="text/css" href="../../lib/css/menu.css">
@@ -22,14 +15,11 @@ session_start();
 <script src="../../lib/bootstrap/js/bootstrap.js"></script>
 <script src="../../lib/select2/js/select2.js"></script>
 <script src="../../js/funcoes.js"></script>
+    <title>Document</title>
+</head>
+<body>
 
-    <head>
-        <title>relatores</title>
-    </head>
-    <body>
-
-    <div class="container">
-    <div id="nav">
+<div id="nav">
         <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100">
             <div class="container">
                 <div class="navbar-header">
@@ -41,10 +31,10 @@ session_start();
                     </button>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
-                    <img src="../../img/marca_procon.jpg" width="100px" height="70px" class="d-inline-block align-top" alt="">
+                    <img src="../img/marca_procon.jpg" width="100px" height="70px" class="d-inline-block align-top" alt="">
                     <ul class="nav navbar-nav navbar-right">
                         <!--deixa os ícones do menu posicionados à direita -->
-                        <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span>
+                        <li class="active"><a href="../inicio.php"><span class="glyphicon glyphicon-home"></span>
                                 Inicio</a>
                         </li>
                         <li class="dropdown">
@@ -57,7 +47,7 @@ session_start();
                             </ul>
                         </li>
                         </li>
-                        <li><a href="sobre.php"><span class="glyphicon glyphicon-home"></span>
+                        <li><a href="../view/sobre.php"><span class="glyphicon glyphicon-home"></span>
                                 Sobre</a>
                         </li>
                         <li class="dropdown">
@@ -78,44 +68,17 @@ session_start();
             <!--/.contatiner -->
         </div>
     </div>
-
-
-<br><br><br><br>
-
-
-
-
-
-
-        <div class="container">
-            <h1>Relatores</h1>
-            <div class="row">
-                <div class="col-sm-10">
-                    <div id="tabelaRelatoresLoad"></div>
-                    <table>
-                        <table class="table table-hover" style="text-align: center;">
-                            <caption><label>Total por Relator</label></caption>
-                            <tr>
-                                <td>Relator</td>
-                                <td>Total de Processos por relator</td>
-                                <td>Valor por Relator</td>
-                            </tr>
-                            <?php $result = ListarNomeRelator($filtro, $filtro1);
-                            while ($linha = $result->fetch_assoc()) {
-                                $resultV = ValorRelator($linha['relator'], $filtro, $filtro1);
-                                $resultT = TotalProcessosRelator($linha['relator'], $filtro, $filtro1); ?>
-                                <tr>
-                                    <td><?php echo $linha['relator']; ?> </td>
-                                    <td><?php echo $resultT; ?></td>
-                                    <td>R$ <?php echo number_format($resultV, 2, ',', '.'); ?> </td>
-                                </tr>
-                            <?php } ?>
-                        </table>
-                        <td style="align:higth;">
-                            <a href="../cadastroPrimeiraC.php" class="btn btn-danger btn-sm"> Voltar <span class="glyphicon glyphicon glyphicon-share-alt"></span></a>
-                        </td>
-                </div>
-            </div>
-        </div>
-    </body>
-    </html>
+    
+</body>
+</html>
+<script type="text/javascript">
+    $(window).scroll(function() {
+        if ($(document).scrollTop() > 150) {
+            $('.logo').width(100);
+            $('.logo').height(60);
+        } else {
+            $('.logo').height(100);
+            $('.logo').width(150);
+        }
+    });
+</script>
