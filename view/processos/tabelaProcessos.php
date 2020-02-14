@@ -10,6 +10,7 @@ $totalValores = totalValores($filtro, $filtro1);
 $result = todosProcessos($filtro, $filtro1);
 ?>
 <br>
+<script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
 <table class="table table-bordered" id="dataTable" cellspacing="4">
     <thead>
         <tr>
@@ -89,7 +90,7 @@ $result = todosProcessos($filtro, $filtro1);
         </div>
     </table>
     <td style="align:center;">
-        <a href="../Repository/pdf/criarRelatorioJaneiroPdf.php?filtr=<?php echo $filtro; ?>&filtr1=<?php echo $filtro1; ?>" class="btn btn-danger btn-sm">
+        <a href="../Repository/pdf/RelatorioPdf.php?filtr=<?php echo $filtro; ?>&filtr1=<?php echo $filtro1; ?>" class="btn btn-danger btn-sm">
             Imprimir <span class="glyphicon glyphicon-print"></span>
         </a>
     </td>

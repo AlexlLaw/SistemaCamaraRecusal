@@ -20,7 +20,7 @@ session_start();
 <script src="../../lib/select2/js/select2.js"></script>
 <script src="../../js/funcoes.js"></script>
     </head>
-
+ 
     <body>
     <div class="container">
     <div id="nav">
@@ -91,11 +91,11 @@ session_start();
 					<label>Senha </label>
 					<input type="text" class="form-control input-sm" name="senha" id="senha">
 					<p></p>
-					<label>Permissões </label>
-					<select class="form-control">
+					<label>Câmara</label>
+					<select  name="camara" id="camara" class="form-control">
 						<option>...</option>
-						<option name="permissao" value="adm">Administrador</option>
-						<option name="permissao" value="usuario">Usuario</option>
+						<option name="camara" value="camara1" id="camara"> 1ª Câmara</option>
+						<option name="camara" value="camara2" id="camara"> 2ª Câmara</option>
 					</select>
 					<br>
 					<span class="btn btn-primary" id="registro">Salvar</span>
@@ -125,6 +125,12 @@ session_start();
 						<input type="text" class="form-control input-sm" name="usuarioU" id="usuarioU">
 						<label>Email</label>
 						<input type="text" class="form-control input-sm" name="emailU" id="emailU">
+						<label>Câmara</label>
+					<select  name="camaraU" class="form-control">
+						<option>...</option>
+						<option name="camaraU" value="camara1U" id="camaraU"> 1ª Câmara</option>
+						<option name="camarau" value="camara2U" id="camaraU"> 2ª Câmara</option>
+					</select>
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -136,91 +142,107 @@ session_start();
 </body>
 
 </html>
-<script type="text/javascript">
-	function adicionarDados(idusuario) {
-		$.ajax({
-			type: "POST",
-			data: "idusuario=" + idusuario,
-			url: "../../Repository/usuarios/obterDados.php",
-			success: function(r) {
-				dado = jQuery.parseJSON(r);
-				$('#idUsuario').val(dado['id']);
-				$('#nomeU').val(dado['nome']);
-				$('#usuarioU').val(dado['user']);
-				$('#emailU').val(dado['email']);
+<script>
+function adicionarDados(idusuario) {
+
+$.ajax({
+	type: "POST",
+	data: "idusuario=" + idusuario,
+	url: "../../Repository/usuarios/obterDados.php",
+	success: function(r) {
+
+		dados = jQuery.parseJSON(r);
+
+		$('#idUsuario').val(dados['id']);
+		$('#nomeU').val(dados['nome']);
+		$('#usuarioU').val(dados['usuario']);
+		$('#emailU').val(dados['email']);
+		$('#camaraU').val(dados['camara']);
+	}
+});
+}
+
+function eliminarUsuario(idusuario) {
+alertify.confirm('Deseja excluir este usuario?', function() {
+	$.ajax({
+		type: "POST",
+		data: "idusuario=" + idusuario,
+	
+		url: "../../Repository/usuarios/eliminarUsuario.php",
+		success: function(r) {
+			if (r == 1) {
+				$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php ');
+				alertify.success("Excluido com sucesso!!");
+			} else {
+				alertify.error("Não excluido :");
 			}
-		});
+		}
+	});
+}, function() {
+	alertify.error('Cancelado !')
+});
+}
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$('#btnAtualizaUsuario').click(function() {
+
+	dados = $('#frmRegistroU').serialize();
+	$.ajax({
+		type: "POST",
+		data: dados,
+		
+		url: "../../Repository/usuarios/atualizarUsuario.php",
+		success: function(r) {
+
+
+
+			if (r == 1) {
+				$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
+				alertify.success("Editado com sucesso :D");
+			} else {
+				alertify.error("Não foi possível editar :");
+			}
+		}
+	});
+});
+});
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
+
+$('#registro').click(function() {
+
+	vazios = validarFormVazio('frmRegistro');
+
+	if (vazios > 0) {
+		alertify.alert("Preencha os campos!!");
+		return false;
 	}
 
-	function eliminarUsuario(idusuario) {
-		alertify.confirm('Deseja excluir este usuario?', function() {
-			$.ajax({
-				type: "POST",
-				data: "idusuario=" + idusuario,
-				url: "../../Repository/usuarios/eliminarUsuario.php",
-				success: function(r) {
-					if (r == 1) {
-						$('#tabelaUsuariosLoad').load('usuarios/tabelaUsuarios.php');
-						alertify.success("Excluido com sucesso!!");
-					} else {
-						alertify.error("Não excluido :(");
-					}
-				}
-			});
-		}, function() {
-			alertify.error('Cancelado !')
-		});
-	}
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#btnAtualizaUsuario').click(function() {
-			datos = $('#frmRegistroU').serialize();
-			$.ajax({
-				type: "POST",
-				data: datos,
-				url: "../../Repository/usuarios/atualizarUsuario.php",
-				success: function(r) {
-					if (r == 1) {
-						$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
-						alertify.success("Editado com sucesso :D");
-					} else {
-						alertify.error("Não foi possível editar :(");
-					}
-				}
-			});
-		});
-	});
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
-		$('#registro').click(function() {
-			vazios = validarFormVazio('frmRegistro');
-			if (vazios > 0) {
-				alertify.alert("Preencha os campos!!");
-				return false;
+	dados = $('#frmRegistro').serialize();
+	$.ajax({
+		type: "POST",
+		data: dados,
+		
+		url: "../../Repository/login/registrarUsuario.php",
+		success: function(r) {
+			//alert(r);
+
+			if (r == 1) {
+				$('#frmRegistro')[0].reset();
+				$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
+				alertify.success("Adicionado com sucesso");
+			} else {
+				alertify.error("Falha ao adicionar :");
 			}
-			datos = $('#frmRegistro').serialize();
-			$.ajax({
-				type: "POST",
-				data: datos,
-				url: "../../Repository/login/registrarUsuario.php",
-				success: function(r) {
-					if (r == 1) {
-						$('#frmRegistro')[0].reset();
-						$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
-						alertify.success("Adicionado com sucesso");
-					} else {
-						alertify.error("Falha ao adicionar :(");
-					}
-				}
-			});
-		});
+		}
 	});
+});
+});
 </script>
-<?php/*
-}else{
-	header("location:../index.php");
-}*/
-?>

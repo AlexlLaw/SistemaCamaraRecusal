@@ -116,7 +116,7 @@ session_start();
         </div>
         </div>
     </body>
-    
+    <?php require_once "templates/footer.php"; ?>
     </html>
 <script type="text/javascript">
     $(window).scroll(function() {

@@ -6,7 +6,7 @@ class usuarios
 		$c = new conectar();
 		$conexao = $c->conexao();
 		$data = date('Y-m-d');
-		$sql = "INSERT into usuarios (nome, user, email, senha, dataCaptura) VALUES ('$dados[0]', '$dados[1]', '$dados[2]', '$dados[3]', '$data')";
+		$sql = "INSERT into usuarios (nome, usuario, email, senha, camara, dataCaptura) VALUES ('$dados[0]', '$dados[1]', '$dados[2]', '$dados[3]','$dados[4]', '$data')";
 		return mysqli_query($conexao, $sql);
 	}
 	public function login($dados)
@@ -37,14 +37,15 @@ class usuarios
 	{
 		$c = new conectar();
 		$conexao = $c->conexao();
-		$sql = "SELECT id,nome,user,email from usuarios where id='$idusuario'";
+		$sql = "SELECT id,nome,usuario,email,camara  from usuarios where id='$idusuario'";
 		$result = mysqli_query($conexao, $sql);
 		$mostrar = mysqli_fetch_row($result);
 		$dados = array(
 			'id' => $mostrar[0],
 			'nome' => $mostrar[1],
-			'user' => $mostrar[2],
-			'email' => $mostrar[3]
+			'usuario' => $mostrar[2],
+			'email' => $mostrar[3],
+			'camara' => $mostrar[4]
 		);
 		return $dados;
 	}
@@ -52,7 +53,7 @@ class usuarios
 	{
 		$c = new conectar();
 		$conexao = $c->conexao();
-		$sql = "UPDATE usuarios set nome='$dados[1]',user='$dados[2]',email='$dados[3]' where id='$dados[0]'";
+		$sql = "UPDATE usuarios set nome='$dados[1]',usuario='$dados[2]',email='$dados[3]' where id='$dados[0]'";
 		return mysqli_query($conexao, $sql);
 	}
 	public function excluir($idusuario)
