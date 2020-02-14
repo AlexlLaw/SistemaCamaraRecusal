@@ -1,31 +1,37 @@
 <?php
-require_once("../../lib/dompdf");
+
+require_once 'dompdf/autoload.inc.php';
+$filtro = $_GET['filtr'];
+$filtro1 = $_GET['filtr1'];
+
+// referenciando o namespace do dompdf
+
 use Dompdf\Dompdf;
-$id = $_GET['idprocesso'];
-/*function file_get_contents_curl($url)
-{
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    $dados = curl_exec($ch);
-    curl_close($ch);
-    return $dados;
-}*/
 
-$dompdf = new DOMPDF();
+// instanciando o dompdf
 
-/* Carrega seu HTML */
-$dompdf->load_html('<p>Adicione seu HTML aqui.</p>');
+$dompdf = new Dompdf();
 
-/* Renderiza */
+//lendo o arquivo HTML correspondente
+
+$html = file_get_contents('http://localhost/SistemaCamaraRecusal/view/processos/relatorioProcessosJaneiroPdf.php?filtr=' .$filtro.'&filtr1='. $filtro1);
+
+//inserindo o HTML que queremos converter
+
+$dompdf->loadHtml($html);
+
+// Definindo o papel e a orientação
+
+$dompdf->setPaper('A4', 'landscape');
+
+// Renderizando o HTML como PDF
+
 $dompdf->render();
 
-/* Exibe */
-$dompdf->stream(
-    "saida.pdf", /* Nome do arquivo de saída */
-    array(
-        "Attachment" => false /* Para download, altere para true */
-    )
-);
+// Enviando o PDF para o browser
+
+$dompdf->stream();
+
 ?>
+
+

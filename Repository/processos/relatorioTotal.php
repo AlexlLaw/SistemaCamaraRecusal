@@ -36,4 +36,18 @@ function ValorRelator($relator, $filtro, $filtro1)
     }
     return $valor;
 }
+function TotalProcessos($filtro, $filtro1)
+{
+    require_once "../../conexao/conexao.php";
+    $c = new conectar();
+    $conexao = $c->conexao();
+    $sql5 = "SELECT count(relator) as relator from processos where data_jugamento between '$filtro' and '$filtro1'";
+    $buscarrelator = mysqli_query($conexao, $sql5);
+    $valor = 0;
+    while ($array3 = $buscarrelator->fetch_assoc()) {
+        $valor = $valor + $array3['relator'];
+    break;
+    }
+    return $valor;
+}
 ?>

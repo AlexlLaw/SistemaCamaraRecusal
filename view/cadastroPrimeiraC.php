@@ -12,7 +12,9 @@ session_start();
        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="../lib/alertifyjs/css/themes/default.css">
+
+        <link rel="stylesheet" type="text/css" href="../lib/alertifyjs/css/alertify.css">
+<link rel="stylesheet" type="text/css" href="../lib/alertifyjs/css/themes/default.css">
 <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../lib/select2/css/select2.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/menu.css">
