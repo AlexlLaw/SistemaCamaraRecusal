@@ -89,7 +89,7 @@ session_start();
 					<label>Email </label>
 					<input type="text" class="form-control input-sm" name="email" id="email">
 					<label>Senha </label>
-					<input type="text" class="form-control input-sm" name="senha" id="senha">
+					<input type="password" class="form-control input-sm" name="senha" id="senha">
 					<p></p>
 					<label>Câmara</label>
 					<select  name="camara" id="camara" class="form-control">
@@ -125,8 +125,10 @@ session_start();
 						<input type="text" class="form-control input-sm" name="usuarioU" id="usuarioU">
 						<label>Email</label>
 						<input type="text" class="form-control input-sm" name="emailU" id="emailU">
+						<label>Senha </label>
+						<input type="password" class="form-control input-sm" name="senhaU" id="senhaU">
 						<label>Câmara</label>
-					<select  name="camaraU" class="form-control">
+						<select  name="camaraU" class="form-control">
 						<option>...</option>
 						<option name="camaraU" value="camara1U" id="camaraU"> 1ª Câmara</option>
 						<option name="camarau" value="camara2U" id="camaraU"> 2ª Câmara</option>
@@ -144,30 +146,26 @@ session_start();
 </html>
 <script>
 function adicionarDados(idusuario) {
-
 $.ajax({
 	type: "POST",
-	data: "idusuario=" + idusuario,
+	data: "idUsuario=" + idusuario,
 	url: "../../Repository/usuarios/obterDados.php",
 	success: function(r) {
-
 		dados = jQuery.parseJSON(r);
-
-		$('#idUsuario').val(dados['id']);
+		$('#idUsuario').val(dados['idUsuario']);
 		$('#nomeU').val(dados['nome']);
 		$('#usuarioU').val(dados['usuario']);
 		$('#emailU').val(dados['email']);
+		$('#senhaU').val(dados['senha']);
 		$('#camaraU').val(dados['camara']);
 	}
 });
 }
-
 function eliminarUsuario(idusuario) {
 alertify.confirm('Deseja excluir este usuario?', function() {
 	$.ajax({
 		type: "POST",
 		data: "idusuario=" + idusuario,
-	
 		url: "../../Repository/usuarios/eliminarUsuario.php",
 		success: function(r) {
 			if (r == 1) {
@@ -183,21 +181,15 @@ alertify.confirm('Deseja excluir este usuario?', function() {
 });
 }
 </script>
-
 <script type="text/javascript">
 $(document).ready(function() {
 $('#btnAtualizaUsuario').click(function() {
-
 	dados = $('#frmRegistroU').serialize();
 	$.ajax({
 		type: "POST",
 		data: dados,
-		
 		url: "../../Repository/usuarios/atualizarUsuario.php",
 		success: function(r) {
-
-
-
 			if (r == 1) {
 				$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
 				alertify.success("Editado com sucesso :D");
@@ -209,31 +201,21 @@ $('#btnAtualizaUsuario').click(function() {
 });
 });
 </script>
-
 <script type="text/javascript">
-
 $(document).ready(function() {
-
 $('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
-
 $('#registro').click(function() {
-
 	vazios = validarFormVazio('frmRegistro');
-
 	if (vazios > 0) {
 		alertify.alert("Preencha os campos!!");
 		return false;
 	}
-
 	dados = $('#frmRegistro').serialize();
 	$.ajax({
 		type: "POST",
 		data: dados,
-		
-		url: "../../Repository/login/registrarUsuario.php",
+		url: "../../Repository/usuarios/registrarUsuario.php",
 		success: function(r) {
-			//alert(r);
-
 			if (r == 1) {
 				$('#frmRegistro')[0].reset();
 				$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');

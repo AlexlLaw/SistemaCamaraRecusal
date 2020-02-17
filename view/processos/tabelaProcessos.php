@@ -4,10 +4,10 @@ require_once "../../Repository/processos/Relatorio.php";
 $camara = $_SESSION['camara'];
 $filtro = $_POST['filtr'];
 $filtro1 = $_POST['filtr1'];
-$grau1 = totalGrau1($filtro, $filtro1);
-$grau2 = totalGrau2($filtro, $filtro1);
-$totalValores = totalValores($filtro, $filtro1);
-$result = todosProcessos($filtro, $filtro1);
+$grau1 = totalGrau1($filtro, $filtro1, $_SESSION['cam']);
+$grau2 = totalGrau2($filtro, $filtro1, $_SESSION['cam']);
+$totalValores = totalValores($filtro, $filtro1, $_SESSION['cam']);
+$result = todosProcessos($filtro, $filtro1, $_SESSION['cam']);
 ?>
 <br>
 <script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
@@ -90,7 +90,7 @@ $result = todosProcessos($filtro, $filtro1);
         </div>
     </table>
     <td style="align:center;">
-        <a href="../Repository/pdf/RelatorioPdf.php?filtr=<?php echo $filtro; ?>&filtr1=<?php echo $filtro1; ?>" class="btn btn-danger btn-sm">
+        <a href="../Repository/pdf/RelatorioPdf.php?filtr=<?php echo $filtro; ?>&filtr1=<?php echo $filtro1; ?>&cam=<?php echo $_SESSION['cam']?>" class="btn btn-danger btn-sm">
             Imprimir <span class="glyphicon glyphicon-print"></span>
         </a>
     </td>

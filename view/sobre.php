@@ -1,24 +1,21 @@
-<?php 
-session_start();
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="../lib/alertifyjs/css/themes/default.css">
-<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../lib/select2/css/select2.css">
-<link rel="stylesheet" type="text/css" href="../lib/css/menu.css">
-<script src="../lib/jquery-3.2.1.min.js"></script>
-<script src="../lib/alertifyjs/alertify.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.js"></script>
-<script src="../lib/select2/js/select2.js"></script>
-<script src="../js/funcoes.js"></script>
-    </head>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../lib/select2/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="../lib/css/menu.css">
+    <script src="../lib/jquery-3.2.1.min.js"></script>
+    <script src="../lib/alertifyjs/alertify.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../lib/select2/js/select2.js"></script>
+    <script src="../js/funcoes.js"></script>
+</head>
 
-    <body>
-
+<body>
     <div id="nav">
         <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100">
             <div class="container">
@@ -54,10 +51,12 @@ session_start();
                             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                 Usuario: <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <?php //if ($_SESSION['usuario'] == "admin") : ?>
-                                    <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                            Usuários</a></li>
-                                <?php // endif; ?>
+                                <?php //if ($_SESSION['usuario'] == "admin") : 
+                                ?>
+                                <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
+                                        Usuários</a></li>
+                                <?php // endif; 
+                                ?>
                                 <li> <a href="relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
                                 <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
@@ -69,13 +68,10 @@ session_start();
             <!--/.contatiner -->
         </div>
     </div>
-
-
-<br><br><br><br>
-
- 
-
-
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container" style="margin-top: 20px;">
         <div class="page-header">
             <h2>Câmaras Recursais</h2>
@@ -83,7 +79,6 @@ session_start();
         <div class="row">
             <div class="col-sm-4">
                 <h1 style="font-size:1.8em; color:#707070">Competência</h1>
-
             </div>
             <div class="page-header">
                 <p style="text-align: justify; font-size: 15px;">

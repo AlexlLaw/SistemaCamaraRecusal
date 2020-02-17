@@ -6,12 +6,14 @@ $sql = "SELECT * from usuarios";
 $result = mysqli_query($conexao, $sql);
 ?>
 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
-	<caption><label>Usuários :)</label></caption>
+	<caption><label>Usuários</label></caption>
 	<tr>
 
 		<td>Nome</td>
 		<td>Usuário</td>
 		<td>Email</td>
+		<td>Senha</td>
+		<td>Camara</td>
 		<td>Editar</td>
 		<td>Excluir</td>
 	</tr>
@@ -20,6 +22,8 @@ $result = mysqli_query($conexao, $sql);
 			<td><?php echo $mostrar[1]; ?></td>
 			<td><?php echo $mostrar[2]; ?></td>
 			<td><?php echo $mostrar[3]; ?></td>
+			<td><?php echo '******' ?></td>
+			<td><?php echo $mostrar[5]; ?></td>
 			<td>
 				<span data-toggle="modal" data-target="#atualizaUsuarioModal" class="btn btn-warning btn-xs" onclick="adicionarDados('<?php echo $mostrar[0]; ?>')">
 					<span class="glyphicon glyphicon-pencil"></span>

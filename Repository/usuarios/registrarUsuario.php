@@ -1,7 +1,6 @@
 <?php 
 require_once "../../conexao/conexao.php";
 require_once "../../controller/usuarios.php";
-$idusuario = $_SESSION['iduser'];
 $obj = new usuarios();
 $senha = sha1($_POST['senha']);
 $dados=array(
@@ -12,4 +11,3 @@ $dados=array(
 	$senha
 );
 echo $obj->registroUsuario($dados);
- ?>

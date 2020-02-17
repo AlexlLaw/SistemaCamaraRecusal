@@ -3,7 +3,7 @@ class processos
 { //class fornecedores{
     public function adicionar($dados)
     { // ver adicionarProcessos.php na linha 31
-        
+
         $c = new conectar();
         $conexao = $c->conexao();
         // insira na tabela de fornecedores... esses dados estão indo para a linha 18 de adicionarProcessos. Note que lá a ordem é a mesma e a quantidade de campos também.

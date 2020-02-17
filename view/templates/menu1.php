@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" type="text/css" href="../../lib/alertifyjs/css/alertify.css">
-<link rel="stylesheet" type="text/css" href="../../lib/alertifyjs/css/themes/default.css">
-<link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../lib/select2/css/select2.css">
-<link rel="stylesheet" type="text/css" href="../../lib/css/menu.css">
-<script src="../../lib/jquery-3.2.1.min.js"></script>
-<script src="../../lib/alertifyjs/alertify.js"></script>
-<script src="../../lib/bootstrap/js/bootstrap.js"></script>
-<script src="../../lib/select2/js/select2.js"></script>
-<script src="../../js/funcoes.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../lib/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/alertifyjs/css/themes/default.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/select2/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/menu.css">
+    <script src="../../lib/jquery-3.2.1.min.js"></script>
+    <script src="../../lib/alertifyjs/alertify.js"></script>
+    <script src="../../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../../lib/select2/js/select2.js"></script>
+    <script src="../../js/funcoes.js"></script>
     <title>Document</title>
 </head>
-<body>
 
-<div id="nav">
+<body>
+    <div id="nav">
         <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100">
             <div class="container">
                 <div class="navbar-header">
@@ -54,10 +54,12 @@
                             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                 Usuario: <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <?php //if ($_SESSION['usuario'] == "admin") : ?>
-                                    <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                            Usuários</a></li>
-                                <?php // endif; ?>
+                                <?php //if ($_SESSION['usuario'] == "admin") : 
+                                ?>
+                                <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
+                                        Usuários</a></li>
+                                <?php // endif; 
+                                ?>
                                 <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
@@ -68,8 +70,8 @@
             <!--/.contatiner -->
         </div>
     </div>
-    
 </body>
+
 </html>
 <script type="text/javascript">
     $(window).scroll(function() {

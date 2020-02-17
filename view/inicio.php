@@ -35,7 +35,6 @@ session_start();
                     <div id="navbar" class="collapse navbar-collapse">
                         <img src="../img/marca_procon.jpg" width="100px" height="70px" class="d-inline-block align-top" alt="">
                         <ul class="nav navbar-nav navbar-right">
-                            <!--deixa os ícones do menu posicionados à direita -->
                             <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span>
                                     Inicio</a>
                             </li>
@@ -55,11 +54,11 @@ session_start();
                                 <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                     Usuario: <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <?php if ($_SESSION['camara'] == 0) : 
+                                    <?php if ($_SESSION['camara'] == 0) :
                                     ?>
-                                    <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                            Usuários</a></li>
-                                    <?php  endif; 
+                                        <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
+                                                Usuários</a></li>
+                                    <?php endif;
                                     ?>
                                     <li> <a href="usuarios/relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
                                     <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
@@ -72,6 +71,7 @@ session_start();
                 <!--/.contatiner -->
             </div>
         </div>
+        <!--deixa os ícones do menu posicionados à direita -->
         <br><br><br><br>
         <div class="container-fluid">
             <div class="page-header">

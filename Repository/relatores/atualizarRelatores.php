@@ -1,11 +1,11 @@
-<?php 
+<?php
 require_once "../../conexao/conexao.php";
 require_once "../../controller/relatores.php";
 $obj = new relatores();
-$dados=array(
-	$_POST['id_relator'],
-	$_POST['nomeU'],
-	$_POST['cpfU'],
-	$_POST['camarasU']
+$dado = array(
+	$_POST['Rid_relator'],
+	$_POST['RnomeU'],
+	$_POST['RcpfU'],
+	$_POST['RcamarasU']
 );
-echo $obj->atualizarRelator($dados);
+echo $obj->atualizarRelator($dado);

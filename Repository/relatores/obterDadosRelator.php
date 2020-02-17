@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "../../conexao/conexao.php";
 require_once "../../controller/relatores.php";
 $obj = new relatores();

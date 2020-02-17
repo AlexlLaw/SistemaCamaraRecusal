@@ -57,11 +57,11 @@ $_SESSION['cam'] = $_GET['cam'];
                             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                 Usuario: <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <?php if ($_SESSION['camara'] == 0) : 
+                                <?php if ($_SESSION['camara'] == 0) :
                                 ?>
-                                <li> <a href="../usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                        Usuários</a></li>
-                                <?php  endif; 
+                                    <li> <a href="../usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
+                                            Usuários</a></li>
+                                <?php endif;
                                 ?>
                                 <li> <a href="relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
                                 <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
@@ -74,16 +74,12 @@ $_SESSION['cam'] = $_GET['cam'];
             <!--/.contatiner -->
         </div>
     </div>
-
-
     <br><br><br><br>
-
     <div class="container">
         <h1>Processos</h1>
         <?php if ($_SESSION['cam'] == $_SESSION['camara']) { ?>
             <div class="row">
                 <div class="col-sm-4">
-
                     <form id="frmProcessos">
                         <label>N° FA</label>
                         <input type="text" class="form-control input-sm" id="nrofa" name="nrofa">
@@ -126,7 +122,6 @@ $_SESSION['cam'] = $_GET['cam'];
                         <span class="btn btn-primary" id="buscar">Salvar</span>
                         <a type="button" class="btn btn-danger" href="inicio.php">Voltar</a>
                     </form>
-
                 </div>
             <?php } ?>
             <!--div que carrega do lado direito da página e recebe os valores digitados do lado esquerdo. Note que uma tem col-sm-4 e a outra col-sm-8, o que soma 12-->
@@ -268,7 +263,6 @@ $_SESSION['cam'] = $_GET['cam'];
                     } else {
 
                         alertify.error("Não foi possível adicionar");
-
                     }
                 }
             });

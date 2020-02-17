@@ -106,16 +106,16 @@
 					</div>
 					<div class="modal-body">
 						<form id="frmRegistroU">
-							<input type="text" hidden="" id="id_relator" name="id_relator">
+							<input type="text" hidden="" id="Rid_relator" name="Rid_relator">
 							<label>Nome</label>
-							<input type="text" class="form-control input-sm" name="nomeU" id="nomeU">
+							<input type="text" class="form-control input-sm" name="RnomeU" id="RnomeU">
 							<label>cpf</label>
-                           <input type="text" class="form-control input-sm" name="cpfU" id="cpfU">
+                           <input type="text" class="form-control input-sm" name="RcpfU" id="RcpfU">
                            <label>Câmara</label>
-							<select name="camarasU" class="form-control">
+							<select name="RcamarasU" class="form-control">
 								<option>...</option>
-								<option name="camarasU" value="1" id="">1º Câmaras</option>
-								<option name="camarasU" value="2" id="">2º Câmaras</option>
+								<option name="RcamarasU" value="1" id="">1º Câmaras</option>
+								<option name="RcamarasU" value="2" id="">2º Câmaras</option>
 							</select>
 						</form>
 					</div>
@@ -129,27 +129,27 @@
 
 </html>
 <script type="text/javascript">
-	function adcionarRelatores(idusuario) {
+	function editarRelatores(id_relator) {
 		$.ajax({
 			type: "POST",
-			data: "id_relator=" + idusuario,
+			data: "id_relator=" + id_relator,
 			url: "../../Repository/relatores/obterDadosRelator.php",
 			success: function(r) {
-				dado = jQuery.parseJSON(r);
-				$('#id_relator').val(dados['id']);
-				$('#nomeU').val(dados['nome']);
-				$('#cpfU').val(dados['cpf']);
-				$('#camarasU').val(dados['camara']);
+				dados = jQuery.parseJSON(r);
+				$('#Rid_relator').val(dados['id']);
+				$('#RnomeU').val(dados['nome']);
+				$('#RcpfU').val(dados['cpf']);
+				$('#RcamarasU').val(dados['camara']);
 			
 			}
 		});
 	}
 
-	function eliminarRelatores(idusuario) {
+	function eliminarRelatores(id_relator) {
 		alertify.confirm('Deseja excluir este Relator?', function() {
 			$.ajax({
 				type: "POST",
-				data: "id_relator=" + idusuario,
+				data: "id_relator=" + id_relator,
 				url: "../../Repository/relatores/eliminarRelatores.php",
 				success: function(r) {
 					if (r == 1) {
@@ -168,13 +168,13 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#btnAtualizaRelator').click(function() {
-			dados = $('#frmRegistroU').serialize();
+			dado = $('#frmRegistroU').serialize();
 			$.ajax({
 				type: "POST",
-				data: dados,
+				data: dado,
 				url: "../../Repository/relatores/atualizarRelatores.php",
 				success: function(r) {
-					if (r != 1) {
+					if (r == 1) {
 						$('#tabelaUsuariosLoad').load('../usuarios/tabelaRelatores.php');
 						alertify.success("Editado com sucesso :D");
 					} else {

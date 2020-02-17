@@ -18,9 +18,9 @@ $result = mysqli_query($conexao, $sql);
 		<tr>
 			<td><?php echo $mostrar[1]; ?></td>
 			<td><?php echo $mostrar[2]; ?></td>
-			<td><?php echo $mostrar[3]; ?></td>
+			<td><?php echo $mostrar[3].'°'; ?></td>
 			<td>
-				<span data-toggle="modal" data-target="#atualizaRelatorModal" class="btn btn-warning btn-xs" onclick="adcionarRelatores('<?php echo $mostrar[0]; ?>')">
+				<span data-toggle="modal" data-target="#atualizaRelatorModal" class="btn btn-warning btn-xs" onclick="editarRelatores('<?php echo $mostrar[0]; ?>')">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</span>
 			</td>

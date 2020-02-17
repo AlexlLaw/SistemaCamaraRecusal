@@ -3,7 +3,6 @@ require_once "../conexao/conexao.php";
 require_once "../Repository/login/ValidacaoUser.php";
 $obj = new conectar();
 $conexao = $obj->conexao();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,5 +1,4 @@
 <?php
-
 function ListarNomeRelator($filtro, $filtro1)
 {
     require_once "../../conexao/conexao.php";
@@ -9,7 +8,6 @@ function ListarNomeRelator($filtro, $filtro1)
     $buscarrelator = mysqli_query($conexao, $sql);
     return $buscarrelator;
 }
-
 function TotalProcessosRelator($relator, $filtro, $filtro1)
 {
     require_once "../../conexao/conexao.php";
@@ -22,7 +20,6 @@ function TotalProcessosRelator($relator, $filtro, $filtro1)
     }
     return $l['Qtd'];
 }
-
 function ValorRelator($relator, $filtro, $filtro1)
 {
     require_once "../../conexao/conexao.php";
@@ -50,4 +47,3 @@ function TotalProcessos($filtro, $filtro1)
     }
     return $valor;
 }
-?>

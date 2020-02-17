@@ -12,7 +12,7 @@ class relatores{
 	public function obterDadosRelator($idrelator){
 		$c = new conectar();
 		$conexao=$c->conexao();
-		$sql = "SELECT id_relator, nome, cpf from relatores where id_relator='$idrelator' ";
+		$sql = "SELECT id_relator, nome, cpf, camara from relatores where id_relator='$idrelator' ";
 			$result = mysqli_query($conexao, $sql);
 			$mostrar = mysqli_fetch_row($result);
 			$dados = array(
@@ -23,11 +23,11 @@ class relatores{
 			);
 			return $dados;
 	}
-	public function atualizarRelator($dados){
+	public function atualizarRelator($dado){
 		$c = new conectar();
 		$conexao=$c->conexao();
-		$sql = "UPDATE relatores SET nome = '$dados[1]', cpf = '$dados[2]', camara = '$dados[3]' where id_relator = '$dados[0]'";
-		echo mysqli_query($conexao, $sql);
+		$sql = "UPDATE relatores SET nome = '$dado[1]', cpf = '$dado[2]', camara = '$dado[3]' where id_relator = '$dado[0]'";
+		return mysqli_query($conexao, $sql);
 	}
 	public function excluirRelator($id){
 		$c = new conectar();
@@ -36,4 +36,3 @@ class relatores{
 		return mysqli_query($conexao, $sql);
 	}
 }
-?>

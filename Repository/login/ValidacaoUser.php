@@ -8,8 +8,9 @@ function validarUser()
         $senha = sha1($_POST['senha']);
         $result = $con->query("SELECT * FROM `usuarios` WHERE `usuario` = '$login' AND `senha`= '$senha'");
         $resultado = $result->fetch_assoc();
-        if (!isset($_SESSION)){
-            session_start();}
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
         if (mysqli_num_rows($result) > 0) {
             $_SESSION['usuario'] = $login;
@@ -24,11 +25,9 @@ function validarUser()
         }
     }
 }
-
 if (isset($_GET['logout'])) {
     logout();
 }
-
 function logout()
 {
     unset($_SESSION['usuario']);

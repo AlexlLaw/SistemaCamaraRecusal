@@ -1,6 +1,6 @@
 <?php
- require_once "./lib/dependencias.php";
-  ?>
+require_once "./lib/dependencias.php";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -50,10 +50,12 @@
                             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                 Usuario: <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <?php //if ($_SESSION['usuario'] == "admin") : ?>
-                                    <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                            Usuários</a></li>
-                                <?php // endif; ?>
+                                <?php //if ($_SESSION['usuario'] == "admin") : 
+                                ?>
+                                <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
+                                        Usuários</a></li>
+                                <?php // endif; 
+                                ?>
                                 <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
