@@ -10,7 +10,6 @@ session_start();
 <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../lib/select2/css/select2.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/menu.css">
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="../lib/jquery-3.2.1.min.js"></script>
 <script src="../lib/alertifyjs/alertify.js"></script>
 <script src="../lib/bootstrap/js/bootstrap.js"></script>
@@ -59,6 +58,7 @@ session_start();
                                     <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
                                             Usuários</a></li>
                                 <?php // endif; ?>
+                                <li> <a href="relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
                                 <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
@@ -118,7 +118,7 @@ session_start();
     </div>
     </div>
 </body>
-<?php require_once "templates/footer.php"; ?>
+
 </html>
 <script type="text/javascript">
     $(window).scroll(function() {

@@ -1,6 +1,6 @@
 <?php 
-require_once "../../classes/conexao.php";
-require_once "../../classes/relatores.php";
-$id = $_POST['idrelator'];
+require_once "../../conexao/conexao.php";
+require_once "../../controller/relatores.php";
+$id = $_POST['id_relator'];
 $obj = new relatores();
 echo $obj->excluirRelator($id);

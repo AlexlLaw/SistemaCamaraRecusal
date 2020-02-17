@@ -1,16 +1,11 @@
 <?php 
 session_start();
-require_once "../../classes/conexao.php";
-require_once "../../classes/relatores.php";
-$idusuario = $_SESSION['iduser'];
+require_once "../../conexao/conexao.php";
+require_once "../../controller/relatores.php";
 $obj = new relatores();
 $dados=array(
-	$idusuario,
-	$_POST['nome'],
-	$_POST['sobrenome'],
-	$_POST['endereco'],
-	$_POST['email'],
-	$_POST['telefone'],
-	$_POST['cpf']
+	$_POST['nome'],	
+	$_POST['cpf'],
+	$_POST['camara']
 );
 echo $obj->adicionarRelator($dados);
