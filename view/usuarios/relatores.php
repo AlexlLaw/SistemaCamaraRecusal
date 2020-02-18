@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+require_once "../../Repository/login/protecte.php";
+protect(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -51,14 +53,14 @@
 								<a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
 									Usuario: <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<?php //if ($_SESSION['usuario'] == "admin") : 
+									<?php if ($_SESSION['camara'] == 0) : 
 									?>
 									<li> <a href="usuarios.php"><span class="glyphicon glyphicon-user"></span> Gestão
 											Usuários</a></li>
-									<?php // endif; 
+									<?php  endif; 
 									?>
 									<li> <a href="relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
-									<li> <a style="color: red" href=""><span class="glyphicon glyphicon-off"></span> Sair</a></li>
+									<li> <a style="color: red" href="../../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -83,8 +85,12 @@
 						<label>Câmaras </label>
 						<select name="camara" class="form-control">
 							<option>...</option>
+							<?php if ($_SESSION['camara'] == 1 || $_SESSION['camara'] == 0) : ?>
 							<option name="camara" value="1" id="camara">1º Câmaras</option>
+							<?php endif ?>
+							<?php if($_SESSION['camara'] == 2 || $_SESSION['camara'] == 0) : ?>
 							<option name="camara" value="2" id="camara">2º Câmaras</option>
+							<?php endif ?>
 						</select>
 						<br>
 						<span class="btn btn-primary" id="registro">Salvar</span>

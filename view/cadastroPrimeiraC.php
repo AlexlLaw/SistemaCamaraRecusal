@@ -1,6 +1,8 @@
 <?php
 session_start();
 $_SESSION['cam'] = $_GET['cam'];
+require_once "../Repository/login/protect.php";
+protect();
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,7 +66,7 @@ $_SESSION['cam'] = $_GET['cam'];
                                 <?php endif;
                                 ?>
                                 <li> <a href="relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
-                                <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
+                                <li> <a style="color: red" href="../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -77,7 +79,7 @@ $_SESSION['cam'] = $_GET['cam'];
     <br><br><br><br>
     <div class="container">
         <h1>Processos</h1>
-        <?php if ($_SESSION['cam'] == $_SESSION['camara']) { ?>
+        <?php if ($_SESSION['cam'] == $_SESSION['camara'] || $_SESSION['camara'] == 0) { ?>
             <div class="row">
                 <div class="col-sm-4">
                     <form id="frmProcessos">
@@ -116,7 +118,7 @@ $_SESSION['cam'] = $_GET['cam'];
                         <input type="number" class="form-control input-sm" id="ano" name="ano">
 
 
-                        <input type="hidden" value="<?php echo $camara ?>" name="camara" id="camara">
+                        <input type="hidden" value="<?php echo $_SESSION['cam'] ?>" name="camara" id="camara">
                         <p></p>
                         <!-- essa span é onde está o botão salvar. Ao ser clicado será acionado o id btnAdicionarFornecedores -->
                         <span class="btn btn-primary" id="buscar">Salvar</span>

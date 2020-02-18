@@ -2,10 +2,8 @@
 session_start();
 require_once "../../conexao/conexao.php";
 require_once "../../controller/processos.php";
-$idusuario = $_SESSION['iduser'];
 $obj = new processos();
 $dados = array(
-    $idusuario,
     $_POST['nrofa'],
     $_POST['consumidor'],
     $_POST['fornecedor'],

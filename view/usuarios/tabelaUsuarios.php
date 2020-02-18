@@ -1,5 +1,7 @@
 <?php
 require_once "../../conexao/conexao.php";
+require_once "../../Repository/login/protecte.php";
+protect();
 $c = new conectar();
 $conexao = $c->conexao();
 $sql = "SELECT * from usuarios";
@@ -23,7 +25,7 @@ $result = mysqli_query($conexao, $sql);
 			<td><?php echo $mostrar[2]; ?></td>
 			<td><?php echo $mostrar[3]; ?></td>
 			<td><?php echo '******' ?></td>
-			<td><?php echo $mostrar[5]; ?></td>
+			<td><?php if($mostrar[6] == 0){echo "Admin";}else{echo $mostrar[6];} ?></td>
 			<td>
 				<span data-toggle="modal" data-target="#atualizaUsuarioModal" class="btn btn-warning btn-xs" onclick="adicionarDados('<?php echo $mostrar[0]; ?>')">
 					<span class="glyphicon glyphicon-pencil"></span>

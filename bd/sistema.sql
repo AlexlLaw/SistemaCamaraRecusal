@@ -16,38 +16,26 @@ create database sistema;
 use sistema;
 
 CREATE TABLE relatores (
-  id_relator int(11) NOT NULL,
+  id_relator int(11) NOT NULL auto_increment,
   nome varchar(100) NOT NULL,
-  sobrenome varchar(100) NOT NULL,
-  endereco varchar(100) NOT NULL,
-  email varchar(100) NOT NULL,
-  telefone varchar(100) NOT NULL,
-  cpf varchar(100) NOT NULL,
+  cpf varchar(100) NOT NULL unique,
+  camara int(1) NOT NULL,
   primary key (id_relator)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE usuarios (
-  id_usuarios int(11) NOT NULL,
+  id_usuarios int(11) NOT NULL auto_increment,
   nome varchar(100) NOT NULL,
   usuario varchar(100) NOT NULL,
   email varchar(100) NOT NULL,
   senha varchar(100) NOT NULL,
   dataCaptura date NOT NULL,
-  primary key (id_usuarios)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE fornecedores (
-  id_fornecedores int(11) NOT NULL,
-  nome varchar(100) NOT NULL,
-  email varchar(100) NOT NULL,
-  telefone int(11) NOT NULL,
-  endereco varchar(100) NOT NULL,
-  primary key (id_fornecedores)
+  camara int(1) not null,
+  primary key (id_usuarios,usuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table processos (
-  id_fornecedor int(11) NOT NULL,
-  id_relator int(11) NOT NULL,
+  id_processos int(11) NOT NULL auto_increment,
   nrofa varchar(100) NOT NULL,
   consumidor varchar(100) NOT NULL,
   fornecedor varchar(150) NOT NULL,
@@ -57,19 +45,6 @@ create table processos (
   data_jugamento date NOT NULL,
   ano int(11) NOT NULL,
   recurso varchar(100) NOT NULL,
-  camara int(1) not null
+  camara int(1) not null,
+  primary key (id_processos)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

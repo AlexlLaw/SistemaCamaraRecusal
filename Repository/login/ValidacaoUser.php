@@ -29,7 +29,8 @@ if (isset($_GET['logout'])) {
     logout();
 }
 function logout()
-{
-    unset($_SESSION['usuario']);
-    header("Location: ../index.php");
+{   
+    session_start();
+    session_destroy();
+    header("Refresh: 0; ../../view/index.php");
 }

@@ -1,3 +1,7 @@
+<?php
+require_once "../../Repository/login/protecte.php";
+protect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +64,7 @@
                                         Usuários</a></li>
                                 <?php // endif; 
                                 ?>
-                                <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
+                                <li> <a style="color: red" href="../../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
                     </ul>

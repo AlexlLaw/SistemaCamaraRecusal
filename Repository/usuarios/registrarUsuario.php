@@ -7,7 +7,7 @@ $dados=array(
 	$_POST['nome'],
 	$_POST['usuario'],
 	$_POST['email'],
-	$_POST['camara'],
-	$senha
+	$senha,
+	$_POST['camara']
 );
 echo $obj->registroUsuario($dados);

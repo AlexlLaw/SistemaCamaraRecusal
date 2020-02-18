@@ -1,6 +1,8 @@
 <?php
 require_once "../../conexao/conexao.php";
 require_once "../../Repository/processos/relatorioTotal.php";
+require_once "../../Repository/login/protecte.php";
+protect();
 $c = new conectar();
 $conexao = $c->conexao();
 session_start();

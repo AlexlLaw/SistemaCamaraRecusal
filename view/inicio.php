@@ -1,6 +1,8 @@
 <?php
-//protect();
 session_start();
+require_once "../Repository/login/protect.php";
+protect();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,7 +63,7 @@ session_start();
                                     <?php endif;
                                     ?>
                                     <li> <a href="usuarios/relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
-                                    <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
+                                    <li> <a style="color: red" href="../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -80,7 +82,7 @@ session_start();
                     1ª e
                     2ª câmara</p>
             </div>
-            <br />
+            <br  />
             <div class="row">
                 <div class="col-sm-6">
                     <div class="jumbotron">

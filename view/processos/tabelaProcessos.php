@@ -8,6 +8,8 @@ $grau1 = totalGrau1($filtro, $filtro1, $_SESSION['cam']);
 $grau2 = totalGrau2($filtro, $filtro1, $_SESSION['cam']);
 $totalValores = totalValores($filtro, $filtro1, $_SESSION['cam']);
 $result = todosProcessos($filtro, $filtro1, $_SESSION['cam']);
+require_once "../../Repository/login/protecte.php";
+protect();
 ?>
 <br>
 <script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
@@ -40,7 +42,7 @@ $result = todosProcessos($filtro, $filtro1, $_SESSION['cam']);
             <td><?php echo date("d/m/Y", strtotime($mostrar[7])) ?></td>
             <td><?php echo $mostrar[8]; ?></td>
             <td><?php echo $mostrar[9]; ?></td>
-            <?php if ($_SESSION['camara'] === $mostrar[10]) { ?>
+            <?php if ($_SESSION['camara'] === $mostrar[10] || $_SESSION['camara'] == 0) { ?>
                 <td>
                     <span class="btn btn-warning btn-xs" data-toggle="modal" data-target="#abremodalProcessosUpdate" onclick="adicionarDado('<?php echo $mostrar[0]; ?>')">
                         <span class="glyphicon glyphicon-pencil"></span>

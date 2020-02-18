@@ -7,7 +7,7 @@ class processos
         $c = new conectar();
         $conexao = $c->conexao();
         // insira na tabela de fornecedores... esses dados estão indo para a linha 18 de adicionarProcessos. Note que lá a ordem é a mesma e a quantidade de campos também.
-        $sql = "INSERT into processos (id_fornecedor,nrofa, consumidor, fornecedor,  relator, ValorGrau_1, ValorGrau_2, data_jugamento, ano, recurso,camara) VALUES (
+        $sql = "INSERT into processos (nrofa, consumidor, fornecedor,  relator, ValorGrau_1, ValorGrau_2, data_jugamento, ano, recurso,camara) VALUES (
            '$dados[0]', 
            '$dados[1]',
 		   '$dados[2]',
@@ -17,8 +17,7 @@ class processos
            '$dados[6]',
            '$dados[7]',
            '$dados[8]',
-           '$dados[9]',
-           '$dados[10]')";
+           '$dados[9]')";
         return mysqli_query($conexao, $sql);
         // isso gera por padrão o valor 1. Lá nas páginas dos meses se a função for 1 é porque os dados foram adicionados.
     }
