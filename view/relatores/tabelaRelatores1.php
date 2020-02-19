@@ -65,12 +65,10 @@ $cam = $_GET['cam'];
                                 <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                     Usuario: <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <?php if ($_SESSION['camara'] == 0) : 
-                                    ?>
-                                    <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                            Usuários</a></li>
-                                    <?php  endif; 
-                                    ?>
+                                    <?php if ($_SESSION['camara'] == 0) : ?>
+                                        <li> <a href="../usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão Usuários</a></li>
+                                    <?php endif; ?>
+                                    <li> <a href="../usuarios/relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
                                     <li> <a style="color: red" href="../../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                                 </ul>
                             </li>
@@ -107,7 +105,7 @@ $cam = $_GET['cam'];
                             <?php } ?>
                         </table>
                         <td style="align:higth;">
-                            <a href="../cadastroPrimeiraC.php" class="btn btn-danger btn-sm"> Voltar <span class="glyphicon glyphicon glyphicon-share-alt"></span></a>
+                            <a href="../cadastroPrimeiraC.php?cam=<?php echo $_SESSION['cam']; ?>" class="btn btn-danger btn-sm"> Voltar <span class="glyphicon glyphicon glyphicon-share-alt"></span></a>
                         </td>
                 </div>
             </div>

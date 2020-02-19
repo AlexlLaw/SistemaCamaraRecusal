@@ -1,6 +1,6 @@
-<?php session_start(); 
+<?php session_start();
 require_once "../Repository/login/protect.php";
-protect();?>
+protect(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -54,14 +54,11 @@ protect();?>
                             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                 Usuario: <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <?php if ($_SESSION['camara'] == 0) : 
-                                ?>
-                                <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                        Usuários</a></li>
-                                <?php  endif; 
-                                ?>
-                                <li> <a href="relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
-                                <li> <a style="color: red" href="../Repository/login/validacaoUser.php?logout" ><span class="glyphicon glyphicon-off"></span> Sair</a></li>
+                                <?php if ($_SESSION['camara'] == 0) : ?>
+                                    <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão Usuários</a></li>
+                                <?php endif; ?>
+                                <li> <a href="usuarios/relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
+                                <li> <a style="color: red" href="../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -76,49 +73,53 @@ protect();?>
     <br>
     <br>
     <div class="container" style="margin-top: 20px;">
-        
-        <div class="jumbotron">
-  <h1 class="display-4">Câmaras Recursais</h1>
-  <p class="lead">Competência</p>
-  <hr class="my-4">
-  <p> Compete a cada Câmara Recursal, no âmbito de sua competência, assessorar o
-                    Superintendente do órgão no processamento e julgamento de recursos de decisões proferidas pela
-                    Assessoria Jurídica, bem como de outras ações ou recursos que a lei pertinente à espécie lhes
-                    atribuir
-                    competência. Esta competência abrange quaisquer matérias que tratem de relação de consumo</p>
-</div>
-        <br>
-<hr>
-        <div class="row" style="margin-left:70px!important;">
-  <div class="col-sm-6" >
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">1ª Câmara Recursal</h3>
-        <hr>
-        <p class="card-text"><p>DEMÉTRIUS FAUSTINO DE SOUZA - PRESIDENTE</p>
-        <p>ANTONIO FELIPE LEITE SOUTO FALCÃO - MEMBRO</p>
-        <p>CYRO CESAR PALITOT REMÍGIO ALVES - MEMBRO</p>
-        <br></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">2ª Câmara recursal</h3>
-        <hr>
-        <p class="card-text"> <p>JULIANA QUEIROZ DE SÁ E BENEVIDES - PRESIDENTE</p>
-        <p>SÉRGIO JOSÉ SANTOS FALCÃO - MEMBRO</p>
-        <p>FERNANDO LIMA DE OLIVEIRA - MEMBRO</p></p>
 
-      </div>
-    </div>
-  </div>
-</div>
-        
-        
-     
-       
+        <div class="jumbotron">
+            <h1 class="display-4">Câmaras Recursais</h1>
+            <p class="lead">Competência</p>
+            <hr class="my-4">
+            <p> Compete a cada Câmara Recursal, no âmbito de sua competência, assessorar o
+                Superintendente do órgão no processamento e julgamento de recursos de decisões proferidas pela
+                Assessoria Jurídica, bem como de outras ações ou recursos que a lei pertinente à espécie lhes
+                atribuir
+                competência. Esta competência abrange quaisquer matérias que tratem de relação de consumo</p>
+        </div>
+        <br>
+        <hr>
+        <div class="row" style="margin-left:70px!important;">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">1ª Câmara Recursal</h3>
+                        <hr>
+                        <p class="card-text">
+                            <p>DEMÉTRIUS FAUSTINO DE SOUZA - PRESIDENTE</p>
+                            <p>ANTONIO FELIPE LEITE SOUTO FALCÃO - MEMBRO</p>
+                            <p>CYRO CESAR PALITOT REMÍGIO ALVES - MEMBRO</p>
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">2ª Câmara recursal</h3>
+                        <hr>
+                        <p class="card-text">
+                            <p>JULIANA QUEIROZ DE SÁ E BENEVIDES - PRESIDENTE</p>
+                            <p>SÉRGIO JOSÉ SANTOS FALCÃO - MEMBRO</p>
+                            <p>FERNANDO LIMA DE OLIVEIRA - MEMBRO</p>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <br>
     </div>
     </div>

@@ -25,8 +25,10 @@ protect();
             <th>Data</th>
             <th>Ano</th>
             <th>Recurso</th>
+            <?php if ($_SESSION['camara'] === $_SESSION['cam'] || $_SESSION['camara'] == 0) { ?>
             <th>Editar</th>
             <th>Excluir</th>
+            <?php }?>
         </tr>
     </thead>
     <tbody>
@@ -53,9 +55,6 @@ protect();
                         <span class="glyphicon glyphicon-remove"></span>
                     </span>
                 </td>
-            <?php } else { ?>
-                <td> </td>
-                <td> </td>
             <?php } ?>
         </tr>
     <?php endwhile; ?>

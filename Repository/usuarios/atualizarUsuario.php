@@ -8,6 +8,6 @@ $dados = array(
 	$_POST['usuarioU'],
 	$_POST['emailU'],
 	$_POST['senhaU'],
-	$_POST['camarasU']
+	$_POST['camaraU']
 );
 echo $obj->atualizar($dados);

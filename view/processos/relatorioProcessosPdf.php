@@ -6,7 +6,6 @@ require_once "../../Repository/login/protecte.php";
 protect();
 $c = new conectar();
 $conexao = $c->conexao();
-session_start();
 $cam = $_GET['cam'];
 $filtro = $_GET['filtr'];
 $filtro1 = $_GET['filtr1'];
@@ -84,10 +83,10 @@ $total = TotalProcessos($filtro, $filtro1, $cam);
         <td>Total de Processos por relator</td>
         <td>Valor por Relator</td>
     </tr>
-    <?php $result = ListarNomeRelator($filtro, $filtro1);
+    <?php $result = ListarNomeRelator($filtro, $filtro1, $cam);
     while ($linha = $result->fetch_assoc()) {
-        $resultV = ValorRelator($linha['relator'], $filtro, $filtro1);
-        $resultT = TotalProcessosRelator($linha['relator'], $filtro, $filtro1); ?>
+        $resultV = ValorRelator($linha['relator'], $filtro, $filtro1, $cam);
+        $resultT = TotalProcessosRelator($linha['relator'], $filtro, $filtro1, $cam); ?>
         <tr>
             <td><?php echo $linha['relator']; ?> </td>
             <td><?php echo $resultT; ?></td>

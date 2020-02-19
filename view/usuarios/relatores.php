@@ -53,12 +53,9 @@ protect(); ?>
 								<a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
 									Usuario: <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<?php if ($_SESSION['camara'] == 0) : 
-									?>
-									<li> <a href="usuarios.php"><span class="glyphicon glyphicon-user"></span> Gestão
-											Usuários</a></li>
-									<?php  endif; 
-									?>
+									<?php if ($_SESSION['camara'] == 0) : ?>
+										<li> <a href="usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão Usuários</a></li>
+									<?php endif; ?>
 									<li> <a href="relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
 									<li> <a style="color: red" href="../../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
 								</ul>
@@ -80,16 +77,17 @@ protect(); ?>
 					<form id="frmRegistro">
 						<label>Nome </label>
 						<input type="text" class="form-control input-sm" name="nome" id="nome">
-                        <label>cpf</label>
-						   <input type="text" class="form-control input-sm" name="cpf" id="cpf">
+						<label>cpf</label>
+						<input type="text" class="form-control input-sm" name="cpf" id="cpf">
 						<label>Câmaras </label>
 						<select name="camara" class="form-control">
 							<option>...</option>
-							<?php if ($_SESSION['camara'] == 1 || $_SESSION['camara'] == 0) : ?>
-							<option name="camara" value="1" id="camara">1º Câmaras</option>
+							<?php
+							if ($_SESSION['camara'] == 1 || $_SESSION['camara'] == 0) : ?>
+								<option name="camara" value="1" id="camara">1º Câmaras</option>
 							<?php endif ?>
-							<?php if($_SESSION['camara'] == 2 || $_SESSION['camara'] == 0) : ?>
-							<option name="camara" value="2" id="camara">2º Câmaras</option>
+							<?php if ($_SESSION['camara'] == 2 || $_SESSION['camara'] == 0) : ?>
+								<option name="camara" value="2" id="camara">2º Câmaras</option>
 							<?php endif ?>
 						</select>
 						<br>
@@ -112,16 +110,19 @@ protect(); ?>
 					</div>
 					<div class="modal-body">
 						<form id="frmRegistroU">
-							<input type="text" hidden="" id="Rid_relator" name="Rid_relator">
+							<input type="text" hidden="" id="id_relator" name="id_relator">
 							<label>Nome</label>
-							<input type="text" class="form-control input-sm" name="RnomeU" id="RnomeU">
+							<input type="text" class="form-control input-sm" name="nomeU" id="nomeU">
 							<label>cpf</label>
-                           <input type="text" class="form-control input-sm" name="RcpfU" id="RcpfU">
-                           <label>Câmara</label>
-							<select name="RcamarasU" class="form-control">
-								<option>...</option>
-								<option name="RcamarasU" value="1" id="">1º Câmaras</option>
-								<option name="RcamarasU" value="2" id="">2º Câmaras</option>
+							<input type="text" class="form-control input-sm" name="cpfU" id="cpfU">
+							<label>Câmara</label>
+							<select name="camaraU" class="form-control">
+								<?php if ($_SESSION['camara'] == 1 || $_SESSION['camara'] == 0) : ?>
+									<option name="camaraU" value="1" id="camara1U">1º Câmaras</option>
+								<?php endif ?>
+								<?php if ($_SESSION['camara'] == 2 || $_SESSION['camara'] == 0) : ?>
+									<option name="camaraU" value="2" id="camara2U">2º Câmaras</option>
+								<?php endif ?>
 							</select>
 						</form>
 					</div>
@@ -142,12 +143,12 @@ protect(); ?>
 			data: "id_relator=" + id_relator,
 			url: "../../Repository/relatores/obterDadosRelator.php",
 			success: function(r) {
-				dados = jQuery.parseJSON(r);
-				$('#Rid_relator').val(dados['id']);
-				$('#RnomeU').val(dados['nome']);
-				$('#RcpfU').val(dados['cpf']);
-				$('#RcamarasU').val(dados['camara']);
-			
+				dado = jQuery.parseJSON(r);
+				$('#id_relator').val(dado['id_relator']);
+				$('#nomeU').val(dado['nome']);
+				$('#cpfU').val(dado['cpf']);
+				$('#camaraU').val(dado['camara']);
+
 			}
 		});
 	}

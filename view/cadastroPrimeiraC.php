@@ -60,13 +60,10 @@ protect();
                             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                                 Usuario: <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <?php if ($_SESSION['camara'] == 0) :
-                                ?>
-                                    <li> <a href="../usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão
-                                            Usuários</a></li>
-                                <?php endif;
-                                ?>
-                                <li> <a href="../view/usuarios/relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
+                                <?php if ($_SESSION['camara'] == 0) : ?>
+                                    <li> <a href="usuarios/usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão Usuários</a></li>
+                                <?php endif; ?>
+                                <li> <a href="usuarios/relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
                                 <li> <a style="color: red" href="../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
@@ -117,42 +114,33 @@ protect();
                         <input type="date" class="form-control input-sm" id="data_jugamento" name="data_jugamento">
                         <label>Ano</label>
                         <input type="number" class="form-control input-sm" id="ano" name="ano">
-
-
                         <input type="hidden" value="<?php echo $_SESSION['cam'] ?>" name="camara" id="camara">
                         <p></p>
                         <!-- essa span é onde está o botão salvar. Ao ser clicado será acionado o id btnAdicionarFornecedores -->
                         <span class="btn btn-primary" id="buscar">Salvar</span>
                         <a type="button" class="btn btn-danger" href="inicio.php">Voltar</a>
-
                     </form>
-           
                 </div>
             <?php } ?>
-           
             <!--div que carrega do lado direito da página e recebe os valores digitados do lado esquerdo. Note que uma tem col-sm-4 e a outra col-sm-8, o que soma 12-->
             <div class="row">
-            <div class="col-sm-3">
-            
-                <form method="POST" style="width:300px;">
-                    <label>De :</label>
-                    <input type="date" class="form-control" name="filtr" id="filtro1" style="width:155px;">
-                    <label>Até :</label>
-                    <input type="date" class="form-control" name="filtr1" id="filtro2" style="width:155px;">
-                    <br>
-                    <input type="submit" value="filtrar" id="busca" class="btn btn-success">
-                    <?php if ($_SESSION['cam'] != $_SESSION['camara'] || $_SESSION['camara'] == 0) { ?>
-                    <a type="hidden" class="btn btn-danger" href="inicio.php">Voltar</a>
-                    <?php }?>
-                  
-               
-                </form>
-                
-            </div>
-            <div class="col-sm-6">
-            <div id="table" class="container-fluid">
+                <div class="col-sm-3">
+                    <form method="POST" style="width:300px;">
+                        <label>De :</label>
+                        <input type="date" class="form-control" name="filtr" id="filtro1" style="width:155px;">
+                        <label>Até :</label>
+                        <input type="date" class="form-control" name="filtr1" id="filtro2" style="width:155px;">
+                        <br>
+                        <input type="submit" value="filtrar" id="busca" class="btn btn-success">
+                        <?php if ($_SESSION['cam'] != $_SESSION['camara'] || $_SESSION['camara'] == 0) { ?>
+                            <a type="hidden" class="btn btn-danger" href="inicio.php">Voltar</a>
+                        <?php } ?>
+                    </form>
                 </div>
-            </div>
+                <div class="col-sm-6">
+                    <div id="table" class="container-fluid">
+                    </div>
+                </div>
             </div>
             </div>
     </div>
@@ -163,7 +151,7 @@ protect();
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Atualizar Fornecedor</h4>
+                    <h4 class="modal-title" id="myModalLabel">Atualizar Processo</h4>
                 </div>
                 <div class="modal-body">
                     <form id="frmProcessosU">
@@ -180,8 +168,8 @@ protect();
                         <input type="text" class="form-control input-sm" id="ValorGrau_2U" name="ValorGrau_2U">
                         <label>Recurso</label>
                         <select class="form-control input-sm" id="recursoU" name="recursoU">
-                            <option>Tempestivo </option>
-                            <option> Intempestivo </option>
+                            <option name="recursoU" id="recursoTU">Tempestivo </option>
+                            <option name="recursoU" id="recursoIU"> Intempestivo </option>
                         </select>
                         <label>Relator</label>
                         <input type="text" class="form-control input-sm" id="relatorU" name="relatorU">
@@ -222,7 +210,7 @@ protect();
             url: "../Repository/processos/obterDadosProcessos.php",
             success: function(r) {
                 dado = jQuery.parseJSON(r);
-                $('#idprocessoU').val(dado['id_fornecedor']);
+                $('#idprocessoU').val(dado['idprocessoU']);
                 $('#nrofaU').val(dado['nrofa']);
                 $('#consumidorU').val(dado['consumidor']);
                 $('#fornecedorU').val(dado['fornecedor']);
@@ -300,10 +288,10 @@ protect();
 <script type="text/javascript">
     $(document).ready(function() {
         $('#btnAdicionarProcessoU').click(function() {
-            dados = $('#frmProcessosU').serialize();
+            dado = $('#frmProcessosU').serialize();
             $.ajax({
                 type: "POST",
-                data: dados,
+                data: dado,
                 url: "../Repository/processos/atualizarProcessos.php",
                 success: function(r) {
                     if (r == 1) {

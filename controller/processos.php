@@ -26,11 +26,11 @@ class processos
     { //esse $id tem que ser igual ao da linha 28.
         $c = new conectar();
         $conexao = $c->conexao();
-        $sql = "SELECT id_fornecedor, nrofa, consumidor, fornecedor,  relator, ValorGrau_1,ValorGrau_2,data_jugamento,ano,recurso from processos where id_fornecedor='$id' ";
+        $sql = "SELECT id_processos, nrofa, consumidor, fornecedor,  relator, ValorGrau_1,ValorGrau_2,data_jugamento,ano,recurso from processos where id_processos='$id' ";
         $result = mysqli_query($conexao, $sql);
         $mostrar = mysqli_fetch_row($result);
         $dados = array(
-            'id_fornecedor' => $mostrar[0],
+            'id_processos' => $mostrar[0],
             'nrofa' => $mostrar[1],
             'consumidor' => $mostrar[2],
             'fornecedor' => $mostrar[3],
@@ -44,19 +44,19 @@ class processos
         return $dados;
     }
     //função para atualizar dados no modal.
-    public function atualizar($dados)
+    public function atualizar($dado)
     {
         $c = new conectar();
         $conexao = $c->conexao();
-        //o comando UPDATE atualiza os dados.
-        $sql = "UPDATE processos SET nrofa = '$dados[1]', consumidor = '$dados[2]',fornecedor = '$dados[3]',relator = '$dados[4]',ValorGrau_1 = '$dados[5]',ValorGrau_2='$dados[6]',data_jugamento= '$dados[7]', ano='$dados[8]' , recurso='$dados[9]'  where id_fornecedor = '$dados[0]'";
-        echo mysqli_query($conexao, $sql);
+        //o comando UPDATE atualiza os dado.
+        $sql = "UPDATE processos SET nrofa = '$dado[1]', consumidor = '$dado[2]',fornecedor = '$dado[3]',ValorGrau_1 = '$dado[4]',ValorGrau_2='$dado[5]' , recurso='$dado[6]',relator = '$dado[7]',data_jugamento= '$dado[8]', ano='$dado[9]'  where id_processos = '$dado[0]'";
+        return mysqli_query($conexao, $sql);
     }
     public function excluir($id)
     {
         $c = new conectar();
         $conexao = $c->conexao();
-        $sql = "DELETE from processos where id_fornecedor = '$id' ";
+        $sql = "DELETE from processos where id_processos = '$id' ";
         return mysqli_query($conexao, $sql);
     }
 }
