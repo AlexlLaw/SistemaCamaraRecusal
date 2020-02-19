@@ -23,9 +23,9 @@ $conexao = $obj->conexao();
 </head>
 
 <body class="bg-dark">
-	<div class="container">
+	<div class="container" style="width: 500px;">
 		<div class="card card-login mx-auto mt-5">
-			<div class="card-header"> <img src="img/logoProcon.png" width="100px" height="70px" class="rounded mx-auto d-block" alt=""></div>
+			<div class="card-header"> <img src="../img/lg04.png" width="300px" height="90px" class="rounded mx-auto d-block" alt=""></div>
 			<div class="card-body">
 				<form method="POST" action="index.php" id="frmLogin">
 					<div class="form-group">

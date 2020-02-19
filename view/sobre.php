@@ -93,7 +93,8 @@ protect();?>
   <div class="col-sm-6" >
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">1ª Câmara Recursal</h5>
+        <h3 class="card-title">1ª Câmara Recursal</h3>
+        <hr>
         <p class="card-text"><p>DEMÉTRIUS FAUSTINO DE SOUZA - PRESIDENTE</p>
         <p>ANTONIO FELIPE LEITE SOUTO FALCÃO - MEMBRO</p>
         <p>CYRO CESAR PALITOT REMÍGIO ALVES - MEMBRO</p>
@@ -104,7 +105,8 @@ protect();?>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">2ª Câmara recursal</h5>
+        <h3 class="card-title">2ª Câmara recursal</h3>
+        <hr>
         <p class="card-text"> <p>JULIANA QUEIROZ DE SÁ E BENEVIDES - PRESIDENTE</p>
         <p>SÉRGIO JOSÉ SANTOS FALCÃO - MEMBRO</p>
         <p>FERNANDO LIMA DE OLIVEIRA - MEMBRO</p></p>

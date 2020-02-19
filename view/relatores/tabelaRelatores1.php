@@ -8,6 +8,7 @@ $conexao = $c->conexao();
 session_start();
 $filtro = $_GET['filtro'];
 $filtro1 = $_GET['filtro1'];
+$cam = $_GET['cam'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,10 +95,10 @@ $filtro1 = $_GET['filtro1'];
                                 <td>Total de Processos por relator</td>
                                 <td>Valor por Relator</td>
                             </tr>
-                            <?php $result = ListarNomeRelator($filtro, $filtro1);
+                            <?php $result = ListarNomeRelator($filtro, $filtro1, $cam);
                             while ($linha = $result->fetch_assoc()) {
-                                $resultV = ValorRelator($linha['relator'], $filtro, $filtro1);
-                                $resultT = TotalProcessosRelator($linha['relator'], $filtro, $filtro1); ?>
+                                $resultV = ValorRelator($linha['relator'], $filtro, $filtro1, $cam);
+                                $resultT = TotalProcessosRelator($linha['relator'], $filtro, $filtro1 , $cam); ?>
                                 <tr>
                                     <td><?php echo $linha['relator']; ?> </td>
                                     <td><?php echo $resultT; ?></td>

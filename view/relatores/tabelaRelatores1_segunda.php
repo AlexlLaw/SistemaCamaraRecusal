@@ -29,7 +29,7 @@ $filtro1 = $_GET['filtro1'];
     <?php } ?>
 </table>
 <td style="align:higth;">
-    <a href="janeiro_segunda.php" class="btn btn-danger btn-sm">
+    <a href="../cadastroPrimeiraC.php" class="btn btn-danger btn-sm">
         Voltar <span class="glyphicon glyphicon glyphicon-share-alt"></span>
     </a>
 </td>
