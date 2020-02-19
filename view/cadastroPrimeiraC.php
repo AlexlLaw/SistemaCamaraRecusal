@@ -123,21 +123,35 @@ protect();
                         <!-- essa span é onde está o botão salvar. Ao ser clicado será acionado o id btnAdicionarFornecedores -->
                         <span class="btn btn-primary" id="buscar">Salvar</span>
                         <a type="button" class="btn btn-danger" href="inicio.php">Voltar</a>
+
                     </form>
+           
                 </div>
             <?php } ?>
+           
             <!--div que carrega do lado direito da página e recebe os valores digitados do lado esquerdo. Note que uma tem col-sm-4 e a outra col-sm-8, o que soma 12-->
-            <div class="col-sm-8">
-                <form method="POST">
+            <div class="row">
+            <div class="col-sm-3">
+            
+                <form method="POST" style="width:300px;">
                     <label>De :</label>
                     <input type="date" class="form-control" name="filtr" id="filtro1" style="width:155px;">
                     <label>Até :</label>
                     <input type="date" class="form-control" name="filtr1" id="filtro2" style="width:155px;">
                     <br>
                     <input type="submit" value="filtrar" id="busca" class="btn btn-success">
+                    <?php if ($_SESSION['cam'] != $_SESSION['camara'] || $_SESSION['camara'] == 0) { ?>
+                    <a type="hidden" class="btn btn-danger" href="inicio.php">Voltar</a>
+                    <?php }?>
+                  
+               
                 </form>
-                <div id="table">
+                
+            </div>
+            <div class="col-sm-6">
+            <div id="table" class="container-fluid">
                 </div>
+            </div>
             </div>
             </div>
     </div>

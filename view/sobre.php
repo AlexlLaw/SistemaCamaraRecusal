@@ -76,36 +76,47 @@ protect();?>
     <br>
     <br>
     <div class="container" style="margin-top: 20px;">
-        <div class="page-header">
-            <h2>Câmaras Recursais</h2>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <h1 style="font-size:1.8em; color:#707070">Competência</h1>
-            </div>
-            <div class="page-header">
-                <p style="text-align: justify; font-size: 15px;">
-                    <br><br>
-                    Compete a cada Câmara Recursal, no âmbito de sua competência, assessorar o
+        
+        <div class="jumbotron">
+  <h1 class="display-4">Câmaras Recursais</h1>
+  <p class="lead">Competência</p>
+  <hr class="my-4">
+  <p> Compete a cada Câmara Recursal, no âmbito de sua competência, assessorar o
                     Superintendente do órgão no processamento e julgamento de recursos de decisões proferidas pela
                     Assessoria Jurídica, bem como de outras ações ou recursos que a lei pertinente à espécie lhes
                     atribuir
-                    competência. Esta competência abrange quaisquer matérias que tratem de relação de consumo.</p>
-            </div>
-        </div>
+                    competência. Esta competência abrange quaisquer matérias que tratem de relação de consumo</p>
+</div>
         <br>
-        <div class="page-header">
-            <h1 style="font-size:1.8em; color:#707070">Composição</h1>
-        </div>
-        <h3><b>1ª Câmara Recursal</b></h3>
-        <p>DEMÉTRIUS FAUSTINO DE SOUZA - PRESIDENTE</p>
+<hr>
+        <div class="row" style="margin-left:70px!important;">
+  <div class="col-sm-6" >
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">1ª Câmara Recursal</h5>
+        <p class="card-text"><p>DEMÉTRIUS FAUSTINO DE SOUZA - PRESIDENTE</p>
         <p>ANTONIO FELIPE LEITE SOUTO FALCÃO - MEMBRO</p>
         <p>CYRO CESAR PALITOT REMÍGIO ALVES - MEMBRO</p>
-        <br>
-        <h3><b>2ª Câmara recursal</b></h3>
-        <p>JULIANA QUEIROZ DE SÁ E BENEVIDES - PRESIDENTE</p>
+        <br></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">2ª Câmara recursal</h5>
+        <p class="card-text"> <p>JULIANA QUEIROZ DE SÁ E BENEVIDES - PRESIDENTE</p>
         <p>SÉRGIO JOSÉ SANTOS FALCÃO - MEMBRO</p>
-        <p>FERNANDO LIMA DE OLIVEIRA - MEMBRO</p>
+        <p>FERNANDO LIMA DE OLIVEIRA - MEMBRO</p></p>
+
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+     
+       
         <br>
     </div>
     </div>
@@ -116,6 +127,7 @@ protect();?>
     </div>
     </div>
 </body>
+<?php require_once "templates/footer.php"; ?>
 
 </html>
 <script type="text/javascript">

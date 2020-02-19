@@ -14,7 +14,7 @@ $dompdf = new Dompdf();
 
 //lendo o arquivo HTML correspondente
 
-$html = file_get_contents('http://localhost/Eduardo/SistemaCamaraRecusal/view/processos/relatorioProcessosJaneiroPdf.php?filtr=' . $filtro . '&filtr1=' . $filtro1.'&cam=<'. $cam);
+$html = file_get_contents('http://localhost/SistemaCamaraRecusal/view/processos/relatorioProcessosJaneiroPdf.php?filtr=' . $filtro . '&filtr1=' . $filtro1.'&cam=<'. $cam);
 
 //inserindo o HTML que queremos converter
 
