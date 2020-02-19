@@ -14,6 +14,7 @@ protect();
     <link rel="stylesheet" type="text/css" href="../lib/alertifyjs/css/themes/default.css">
     <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../lib/select2/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="../lib/alertifyjs/css/alertify.css">
     <link rel="stylesheet" type="text/css" href="../lib/css/menu.css">
     <script src="../lib/jquery-3.2.1.min.js"></script>
     <script src="../lib/alertifyjs/alertify.js"></script>
@@ -65,7 +66,7 @@ protect();
                                             Usuários</a></li>
                                 <?php endif;
                                 ?>
-                                <li> <a href="relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
+                                <li> <a href="../view/usuarios/relatores.php"><span class="glyphicon glyphicon-user"></span> Relatores</a></li>
                                 <li> <a style="color: red" href="../Repository/login/validacaoUser.php?logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
                             </ul>
                         </li>
@@ -203,13 +204,13 @@ protect();
 <!-- Adicionar dados -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script>
-    $('#valor').mask('000.000.000.000.000,00', {
+    $('#ValorGrau_1').mask('000.000.000.000.000,00', {
         reverse: true
     });
     $('#valorU').mask('000.000.000.000.000,00', {
         reverse: true
     });
-    $('#valor_2').mask('000.000.000.000.000,00', {
+    $('#ValorGrau_2').mask('000.000.000.000.000,00', {
         reverse: true
     });
 </script>
@@ -272,7 +273,7 @@ protect();
                 data: dados,
                 url: "../Repository/processos/adicionarProcessos.php",
                 success: function(r) {
-                    if (r != 1) {
+                    if (r == 1) {
                         $('#frmProcessos')[0].reset();
                         //para adicionar novo registro
                         alertify.success("Registro Adicionado");

@@ -7,14 +7,19 @@ $conexao = $c->conexao();
 $sql = "SELECT * from relatores";
 $result = mysqli_query($conexao, $sql);
 ?>
+<style>
+th{
+	text-align:center;
+}
+</style>
 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
 	<caption><label>Relatores</label></caption>
 	<tr>
-		<td>Nome</td>
-		<td>Cpf</td>
-		<td>Câmaras</td>
-		<td>Editar</td>
-		<td>Excluir</td>
+		<th>Nome</th>
+		<th>Cpf</th>
+		<th>Câmaras</th>
+		<th>Editar</th>
+		<th>Excluir</th>
 	</tr>
 	<?php while ($mostrar = mysqli_fetch_row($result)) : ?>
 		<tr>

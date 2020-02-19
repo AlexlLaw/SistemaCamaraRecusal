@@ -134,6 +134,7 @@ protect(); ?>
 </body>
 
 </html>
+
 <script type="text/javascript">
 	function editarRelatores(id_relator) {
 		$.ajax({
