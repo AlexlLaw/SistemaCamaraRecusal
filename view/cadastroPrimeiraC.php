@@ -2,6 +2,7 @@
 session_start();
 $_SESSION['cam'] = $_GET['cam'];
 require_once "../Repository/login/protect.php";
+require_once "../Repository/relatores/dadosRelator.php";
 protect();
 ?>
 <!DOCTYPE html>
@@ -93,22 +94,17 @@ protect();
                         <input type="text" class="form-control input-sm" id="ValorGrau_2" name="ValorGrau_2">
                         <label>Recurso</label>
                         <select class="form-control input-sm" id="recurso" name="recurso">
-                            <option>Tempestivo </option>
+                            <option> Tempestivo </option>
                             <option> Intempestivo </option>
                         </select>
                         <label>Relatores</label>
                         <select class="form-control input-sm" id="relator" name="relator">
                             <option>-----</option>
-                            <option>Demetrius</option>
-                            <option>Edson</option>
-                            <option>Filipe</option>
-                            <option>Emannuel</option>
-                            <option>Cyro</option>
-                            <option>Juliana</option>
-                            <option>Sérgio</option>
-                            <option>Fernando</option>
-                            <option>Rogério</option>
-                            <option>Cláudio</option>
+                            <?php
+                            $nomeR = listarRelator($_SESSION['cam']);
+                            while ($mostrar = mysqli_fetch_row($nomeR)) : ?>
+                                <option><?php echo $mostrar[0] ?></option>
+                            <?php endwhile ?>
                         </select>
                         <label>Data De Julgamento</label>
                         <input type="date" class="form-control input-sm" id="data_jugamento" name="data_jugamento">
@@ -172,7 +168,14 @@ protect();
                             <option name="recursoU" id="recursoIU"> Intempestivo </option>
                         </select>
                         <label>Relator</label>
-                        <input type="text" class="form-control input-sm" id="relatorU" name="relatorU">
+                        <select class="form-control input-sm" id="relatorU" name="relatorU">
+                        <?php 
+                            $nomeR = listarRelator($_SESSION['cam']);
+                            while ($mostrar = mysqli_fetch_row($nomeR)) : ?>
+                                <option id="relatorU" name="relatorU"><?php echo $mostrar[0] ?></option>
+                            <?php endwhile ?>
+                            </select>
+                           <br> 
                         <label>Data de julgamento</label>
                         <input type="date" class="form-control input-sm" id="data_jugamentoU" name="data_jugamentoU">
                         <label>Ano</label>
