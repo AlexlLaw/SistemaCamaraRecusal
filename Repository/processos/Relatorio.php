@@ -18,9 +18,8 @@ function totalGrau1($filtro, $filtro1, $cam)
     $valor = 0;
     while ($array3 = mysqli_fetch_array($buscarDb)) {
         $valor = $valor + $array3['ValorGrau_1'];
-        $valorFormatado1 = str_replace(',', '.', str_replace('.', '', $valor));
     }
-    return number_format($valorFormatado1, 2, ',', '.');
+    return number_format($valor, 2, ',', '.');
 }
 function totalGrau2($filtro, $filtro1, $cam)
 {
@@ -33,9 +32,8 @@ function totalGrau2($filtro, $filtro1, $cam)
     $valor = 0;
     while ($array3 = mysqli_fetch_array($buscarDb)) {
         $valor = $valor + $array3['ValorGrau_2'];
-        $valorFormatado2 = str_replace(',', '.', str_replace('.', '', $valor));
     }
-    return number_format($valorFormatado2, 2, ',', '.');
+    return number_format($valor, 2, ',', '.');
 }
 function totalValores($filtro, $filtro1, $cam)
 {

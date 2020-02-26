@@ -117,7 +117,7 @@ protect();
 						<h4 class="modal-title" id="myModalLabel">Editar Usuario</h4>
 					</div>
 					<div class="modal-body">
-						<form id="frmRegistroU">
+						<form id="frmRegistroU" >
 							<input type="text" hidden="" id="idUsuario" name="idUsuario">
 							<label>Nome</label>
 							<input type="text" class="form-control input-sm" name="nomeU" id="nomeU">
@@ -151,7 +151,7 @@ protect();
 			url: "../../Repository/usuarios/obterDados.php",
 			success: function(r) {
 				dados = jQuery.parseJSON(r);
-				$('#idUsuario').val(dados['idUsuario']);
+				$('#idUsuario').val(idusuario);
 				$('#nomeU').val(dados['nome']);
 				$('#usuarioU').val(dados['usuario']);
 				$('#emailU').val(dados['email']);
@@ -188,9 +188,9 @@ protect();
 			$.ajax({
 				type: "POST",
 				data: dados,
-				url: "../../Repository/usuarios/atualizarUsuario.php",
+				url: "../../Repository/usuarios/atualizarUsuario.php?",
 				success: function(r) {
-					if (r == 1) {
+					if (r != 1) {
 						$('#tabelaUsuariosLoad').load('../usuarios/tabelaUsuarios.php');
 						alertify.success("Editado com sucesso");
 					} else {

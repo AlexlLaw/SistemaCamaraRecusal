@@ -39,8 +39,8 @@ protect();
             <td><?php echo $mostrar[2]; ?></td>
             <td><?php echo $mostrar[3]; ?></td>
             <td><?php echo $mostrar[4]; ?></td>
-            <td> R$<?php echo $mostrar[5]; ?></td>
-            <td>R$<?php echo $mostrar[6]; ?></td>
+            <td> R$<?php echo number_format($mostrar[5], 2, ',', '.');  ?></td>
+            <td>R$<?php echo number_format($mostrar[6], 2, ',', '.');  ?></td>
             <td><?php echo date("d/m/Y", strtotime($mostrar[7])) ?></td>
             <td><?php echo $mostrar[8]; ?></td>
             <td><?php echo $mostrar[9]; ?></td>

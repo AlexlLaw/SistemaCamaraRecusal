@@ -169,11 +169,7 @@ protect();
                         </select>
                         <label>Relator</label>
                         <select class="form-control input-sm" id="relatorU" name="relatorU">
-                        <?php 
-                            $nomeR = listarRelator($_SESSION['cam']);
-                            while ($mostrar = mysqli_fetch_row($nomeR)) : ?>
-                                <option id="relatorU" name="relatorU"><?php echo $mostrar[0] ?></option>
-                            <?php endwhile ?>
+                        <option id="relatorU" name="relatorU">teste</option>
                             </select>
                            <br> 
                         <label>Data de julgamento</label>
@@ -213,7 +209,7 @@ protect();
             url: "../Repository/processos/obterDadosProcessos.php",
             success: function(r) {
                 dado = jQuery.parseJSON(r);
-                $('#idprocessoU').val(dado['idprocessoU']);
+                $('#idprocessoU').val(idprocesso);
                 $('#nrofaU').val(dado['nrofa']);
                 $('#consumidorU').val(dado['consumidor']);
                 $('#fornecedorU').val(dado['fornecedor']);
@@ -297,7 +293,7 @@ protect();
                 data: dado,
                 url: "../Repository/processos/atualizarProcessos.php",
                 success: function(r) {
-                    if (r == 1) {
+                    if (r != 1) {
                         $('#frmProcessos')[0].reset();
                         ('#tabelaProcessosLoad').load("processos/tabelaProcessos.php");
                         alertify.success("Registro atualizado com sucesso!");
@@ -309,5 +305,3 @@ protect();
         })
     })
 </script>
-<?php
-?>
